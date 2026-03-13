@@ -1,0 +1,162 @@
+@use "sass:map";
+
+@import 'mixins/mixins';
+@import 'common/var';
+
+@include b(select-dropdown) {
+  z-index: calc(var(--el-index-top) + 1);
+  border-radius: var(--el-border-radius-base);
+  box-sizing: border-box;
+
+  .#{$namespace}-select-dropdown__item.selected {
+    color: #3188e8;
+  }
+
+  @include when(multiple) {
+    & .#{$namespace}-select-dropdown__item.selected {
+      color: unset;
+      background-color: map.get($--select-dropdown, 'background');
+      font-weight: 400;
+
+      &:hover {
+        background-color: var(--el-background-color-hover);
+      }
+
+      // &.hover {
+      //   background-color: map.get($--select-option, 'hover-background');
+      // }
+
+      &::after {
+        content: '';
+        // position: absolute;
+        // right: 20px;
+        // font-family: 'element-icons';
+        // content: '\e6da';
+        // font-size: 12px;
+        // font-weight: bold;
+        // -webkit-font-smoothing: antialiased;
+        // -moz-osx-font-smoothing: grayscale;
+      }
+    }
+
+    .#{$namespace}-select-inp {
+      white-space: nowrap;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+
+      @include when(selected) {
+        .#{$namespace}-select-checkbox {
+          background-color: #3188e8;
+          border-color: #3188e8;
+
+          &::after {
+            transform: rotate(45deg) scaleY(1);
+          }
+        }
+      }
+    }
+
+    & .#{$namespace}-select-dropdown__item {
+      .#{$namespace}-select-checkbox {
+        display: inline-block;
+        position: relative;
+        border: 1px solid #dcdfe6;
+        border-radius: 2px;
+        box-sizing: border-box;
+        width: 14px;
+        height: 14px;
+        top: 0px;
+        margin-right: 6px;
+        background-color: #fff;
+        // transition: border-color .25s cubic-bezier(.71, -.46, .29, 1.46), background-color .25s cubic-bezier(.71, -.46, .29, 1.46);
+        z-index: 1;
+        pointer-events: none;
+
+        &::after {
+          box-sizing: initial;
+          content: "";
+          border: 1.72px solid #fff;
+          border-left: 0;
+          border-top: 0;
+          height: 7px;
+          left: 3.9px;
+          position: absolute;
+          top: 0px;
+          transform: rotate(45deg) scaleY(0);
+          width: 3px;
+          // transition: transform .15s ease-in .05s;
+          transform-origin: center;
+        }
+      }
+    }
+  }
+
+  .#{$namespace}-scrollbar.is-empty .#{$namespace}-select-dropdown__list {
+    padding: 0;
+  }
+
+  .#{$namespace}-checkbox {
+    font-size: 12px;
+    padding: 0 10px;
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--el-text-color-low-black);
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--el-background-color-hover);
+    }
+  }
+
+  .#{$namespace}-checkbox__label {
+    font-size: 12px;
+  }
+
+  .el-checkbox__input.is-checked+.el-checkbox__label {
+    color: #333;
+  }
+
+  .#{$namespace}-checkbox__inner {
+    pointer-events: none;
+    // &:hover {
+    //   border-color: #dcdfe6;
+    // }
+    transition: unset;
+
+    &::after {
+      transition: unset;
+    }
+  }
+}
+
+@include b(select-dropdown__empty) {
+  padding: map.get($--select-dropdown, 'empty-padding');
+  margin: 0;
+  text-align: center;
+  color: map.get($--select-dropdown, 'empty-color');
+  font-size: var(--el-select-font-size);
+}
+
+@include b(select-dropdown__wrap) {
+  max-height: map.get($--select-dropdown, 'max-height');
+}
+
+@include b(select-dropdown__list) {
+  list-style: none;
+  margin: map.get($--select-dropdown, 'padding');
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.no-top {
+  margin-top: 0px;
+}

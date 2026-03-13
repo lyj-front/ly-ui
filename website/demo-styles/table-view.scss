@@ -1,0 +1,23 @@
+.demo-table-view {
+    .source {
+        > div:first-child {
+            height: 500px;
+        }
+        
+        .table-config-box {
+            position: relative;
+            height: 30px;
+            .right-but {
+                position: absolute;
+                top: 0;
+                right: 0;
+                line-height: 30px;
+                display: flex;
+            }
+
+            .ly-table-view {
+                margin-right: 28px;
+            }
+        }
+    }
+}

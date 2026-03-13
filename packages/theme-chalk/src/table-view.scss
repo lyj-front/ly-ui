@@ -1,0 +1,112 @@
+.ly-table-view {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .table-view-button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .ly-table-p {
+            max-width: 100px;
+            margin: 0 4px;
+            font-size: 12px;
+            color: var(--el-color-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .table-view-box-mask {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 1000;
+    }
+
+    .view-box {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: 172px;
+        background: var(--el-color-white);
+        box-shadow: 0px 2px 4px 0px rgba(165, 165, 165, 0.5);
+        border-radius: 2px;
+        border: 1px solid var(--el-color-grey);
+        padding: 0;
+        z-index: 1001;
+        box-sizing: border-box;
+        font-size: 12px;
+        line-height: 17px;
+
+        .view-sol {
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .view-item-title {
+            padding: 9px 10px 8px 10px;
+            color: var(--el-color-info);
+        }
+
+        .view-item {
+            position: relative;
+            padding: 6px 16px 5px 16px;
+            color: var(--el-text-color-low-black);
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--el-background-color-hover);
+            }
+
+            &.active::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 18px;
+                height: 18px;
+                background-size: 18px 18px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-image: url(./icon/view-item-active.png);
+                margin: auto;
+            }
+        }
+
+        .view-button {
+            cursor: pointer;
+            padding: 10px 16px 9px 16px;
+            display: flex;
+            align-items: center;
+            color: var(--el-color-primary);
+
+            i {
+                margin-right: 4px;
+            }
+
+            .el-icon-view-add {
+                margin-top: -1px;
+            }
+
+            .el-icon-table-config:before {
+                width: 14px;
+                height: 14px;
+                background-size: 14px 14px;
+            }
+
+            &:hover {
+                background-color: var(--el-background-color-hover);
+            }
+        }
+    }
+
+    .el-divider--horizontal {
+        margin: 0;
+    }
+}

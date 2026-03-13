@@ -1,0 +1,14 @@
+.demo-table-config {
+    .source {
+        .table-config-box {
+            position: relative;
+            height: 30px;
+            .right-but {
+                position: absolute;
+                top: 0;
+                right: 0;
+                line-height: 30px;
+            }
+        }
+    }
+}

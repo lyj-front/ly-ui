@@ -1,0 +1,1154 @@
+@import 'mixins/mixins';
+@import 'mixins/utils';
+@import 'common/var';
+
+.#{$namespace}-upload-picture-card_picture-card {
+  .#{$namespace}-upload__tip {
+    margin-top: 4px;
+  }
+}
+
+@include b(upload) {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  vertical-align: top;
+
+  @include e(input) {
+    display: none !important;
+  }
+
+  @include e(tip) {
+    font-size: 12px;
+    color: var(--el-color-label);
+    margin-top: 12px;
+    line-height: 1;
+  }
+
+  iframe {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+
+  /* 头像模式 */
+  @include m(avatar-uploader) {
+    .el-upload--text {
+      height: 104px;
+      width: 104px;
+      background: #FAFAFA;
+    }
+
+    .#{$namespace}-upload {
+      cursor: pointer;
+      position: relative;
+      border-radius: 4px;
+
+      &:hover,
+      &:focus {
+        border-color: var(--el-color-primary);
+
+        .avatar-uploader-icon,
+        .avatar-uploader-text {
+          color: var(--el-color-primary);
+        }
+
+        .avatar-uploader-out {
+          border-color: var(--el-color-primary);
+        }
+      }
+    }
+
+    .avatar-uploader-out {
+      border: 1px dashed #d9d9d9;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 4px;
+
+      .avatar-uploader-icon {
+        font-size: 24px;
+        color: var(--el-text-color-placeholder);
+        width: 24px;
+        height: 24px;
+        text-align: center;
+      }
+
+      .avatar-uploader-text {
+        font-size: 14px;
+        color: var(--el-text-color-placeholder);
+        margin-top: 8px;
+      }
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+
+  }
+
+  /* 照片墙模式 */
+  @include m(picture-card) {
+    background-color: #fafafa;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 104px;
+    height: 104px;
+    cursor: pointer;
+    vertical-align: top;
+    margin-bottom: 8px;
+
+    .avatar-uploader-out {
+      border: 1px dashed #d9d9d9;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 4px;
+
+      i {
+        font-size: 24px;
+        color: var(--el-text-color-placeholder);
+        width: 24px;
+        height: 24px;
+        text-align: center;
+      }
+
+      .avatar-uploader-text {
+        font-size: 14px;
+        color: var(--el-text-color-placeholder);
+        margin-top: 8px;
+      }
+    }
+
+    &:hover {
+      border-color: var(--el-color-primary);
+      color: var(--el-color-primary);
+
+      .avatar-uploader-icon,
+      .avatar-uploader-text {
+        color: var(--el-color-primary);
+      }
+
+      .avatar-uploader-out {
+        border-color: var(--el-color-primary);
+      }
+    }
+  }
+
+  &:focus {
+    border-color: var(--el-color-primary);
+    color: var(--el-color-primary);
+
+    .#{$namespace}-upload-dragger {
+      border-color: var(--el-color-primary);
+    }
+
+    .avatar-uploader-icon,
+    .avatar-uploader-text {
+      color: var(--el-color-primary);
+    }
+
+    .avatar-uploader-out {
+      border-color: var(--el-color-primary);
+    }
+  }
+}
+
+@include b(upload-dragger) {
+  background-color: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 840px;
+  height: 216px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  .#{$namespace}-icon-upload3 {
+    margin-top: 40px;
+    line-height: 50px;
+  }
+
+  +.#{$namespace}-upload__tip {
+    font-size: 16px;
+    text-align: center;
+    line-height: 22px;
+  }
+
+  .#{$namespace}-upload__tips {
+    font-size: 14px;
+    color: var(--el-text-color-placeholder);
+    text-align: center;
+    line-height: 20px;
+    margin-top: 30px;
+
+    p {
+      margin: 0;
+
+      b {
+        color: var(--el-text-color-primary);
+      }
+
+    }
+  }
+
+  ~.#{$namespace}-upload__files {
+    border-top: $--border-base;
+    margin-top: 7px;
+    padding-top: 5px;
+  }
+
+  .#{$namespace}-upload__text {
+    color: var(--el-color-label);
+    font-size: 16px;
+    text-align: center;
+    line-height: 22px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+
+  &:hover {
+    border-color: var(--el-color-primary);
+  }
+
+  @include when(dragover) {
+    border-color: var(--el-color-primary);
+  }
+}
+
+@include b(upload-list) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include e(item) {
+    transition: none !important;
+    font-size: 14px;
+    color: var(--el-text-color-regular);
+    line-height: 18px;
+    margin-top: 12px;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+
+    .#{$namespace}-progress {
+      position: relative !important;
+      // top: 30px;
+      width: 100%;
+      margin: 10px 0;
+
+      .#{$namespace}-progress__text {
+        color: #4A4A4A;
+      }
+    }
+
+    .#{$namespace}-progress__text {
+      position: absolute;
+      right: 0;
+      top: -6px;
+      text-align: center;
+    }
+
+    .#{$namespace}-progress-bar {
+      margin-right: 0;
+      padding-right: 0;
+      flex-grow: 0.8
+    }
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    & .#{$namespace}-icon-upload-success {
+      color: var(--el-color-success);
+    }
+
+    .#{$namespace}-icon-close {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      opacity: 0.75;
+      color: var(--el-text-color-regular);
+      //transform: scale(.7);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    & .#{$namespace}-icon-close-tip {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 1;
+      color: var(--el-color-primary);
+    }
+
+    &:hover {
+      background-color: $--background-color-hover-1;
+
+      .#{$namespace}-icon-close {
+        display: inline-block;
+      }
+
+      .#{$namespace}-progress__text {
+        // display: none;
+      }
+    }
+
+    @include when(fail) {
+      .#{$namespace}-upload-list__item-status-label {
+        display: block!important;
+      }
+    }
+
+    @include when(success) {
+      .#{$namespace}-upload-list__item-status-label {
+        display: block!important;
+      }
+
+      &:focus:not(:hover) {
+
+        /* 键盘focus */
+        .#{$namespace}-icon-close-tip {
+          display: none!important;
+        }
+      }
+
+      &:not(.focusing):focus,
+      &:active {
+        /* click时 */
+        outline-width: 0;
+
+        .#{$namespace}-icon-close-tip {
+          display: none;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        .#{$namespace}-upload-list__item-status-label {
+          // display: none;
+        }
+      }
+    }
+  }
+
+
+
+  @include when(disabled) {
+    .#{$namespace}-upload-list__item:hover .#{$namespace}-upload-list__item-status-label {
+      display: block;
+    }
+  }
+
+  @include e(item-name) {
+    color: var(--el-text-color-low-black);
+    display: block;
+    margin-right: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: none !important;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+
+    [class^='#{$namespace}-icon'] {
+      height: 100%;
+      margin-right: 7px;
+      color: var(--el-text-color-secondary);
+      line-height: inherit;
+    }
+
+    @include e(item-name-text) {
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+
+    @include e(item-name-text-error) {
+      color: #EE3939 !important;
+    }
+  }
+
+  @include e(item-status-label) {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    height: 18px;
+    line-height: inherit;
+    cursor: pointer;
+
+    .el-icon-lyjdelred {
+      display: inline-block;
+    }
+
+    .el-icon-lyjdelgrey {
+      display: inline-block;
+    }
+
+    .el-icon-lyjdelblue {
+      display: none;
+    }
+
+    &:hover {
+      .el-icon-lyjdelgrey {
+        display: none;
+      }
+
+      .el-icon-lyjdelblue {
+        display: inline-block;
+      }
+    }
+  }
+
+  @include e(item-delete) {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 12px;
+    color: var(--el-text-color-regular);
+    display: none;
+
+    &:hover {
+      color: var(--el-color-primary);
+    }
+  }
+
+  @include m(picture-card) {
+    margin: 0;
+    display: inline;
+    vertical-align: top;
+
+    .#{$namespace}-upload-list__item {
+      overflow: hidden;
+      background-color: #FAFAFA;
+      border-radius: 4px;
+      box-sizing: border-box;
+      width: 104px;
+      height: 104px;
+      margin: 0 12px 8px 0;
+      display: inline-block;
+      vertical-align: top;
+
+      .#{$namespace}-icon-check,
+      .#{$namespace}-icon-circle-check {
+        color: $--color-white;
+      }
+
+      .#{$namespace}-icon-close {
+        display: none;
+      }
+
+      &:hover {
+        .#{$namespace}-upload-list__item-status-label {
+          // display: none;
+        }
+
+        .#{$namespace}-progress__text {
+          display: block;
+        }
+      }
+    }
+
+    .#{$namespace}-upload-list__item-name {
+      display: none;
+    }
+
+    .#{$namespace}-upload-list__item-thumbnail {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .#{$namespace}-upload-list__item-fail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px dashed #d9d9d9;
+
+      .#{$namespace}-upload-list__item-fail-i {
+        display: inline-block;
+        height: 60px;
+        width: 50px;
+        background: url(./icon/upload-fail@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+
+      >span {
+        font-size: 14px;
+        color: var(--el-text-color-placeholder);
+        margin-top: 6px;
+      }
+    }
+
+    .#{$namespace}-upload-list__item-status-label {
+      position: absolute;
+      right: -7px;
+      top: -12px;
+      width: 40px;
+      height: 24px;
+      text-align: center;
+      
+      i {
+        font-size: 12px;
+        margin-top: 11px;
+      }
+      .#{$namespace}-icon-item-remove {
+        &:hover{
+          &::before{
+            background-image: url("./icon/rightremovehover@2x.png");
+          }
+        }
+      }
+    }
+
+    .#{$namespace}-upload-list__item-progress {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+      border: 1px dashed #d9d9d9;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      .#{$namespace}-icon-item-remove {
+        position: absolute;
+        font-size: 12px;
+        right: -1px;
+        top: -1px;
+        cursor: pointer;
+        &:hover{
+          background-color: unset !important;
+        }
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      >p:first-child {
+        font-size: 14px;
+        color: var(--el-color-label);
+        line-height: 20px;
+        margin-bottom: 12px;
+      }
+
+      >p:last-child {
+        font-size: 12px;
+        color: var(--el-text-color-low-black);
+        line-height: 17px;
+        margin-top: 8px;
+      }
+    }
+
+    .#{$namespace}-progress {
+      position: static;
+      width: 75%;
+
+      .#{$namespace}-progress-bar {
+        flex-grow: 1
+      }
+    }
+
+    .#{$namespace}-upload-list__item-actions {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: default;
+      text-align: center;
+      color: #fff;
+      opacity: 0;
+      font-size: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: none !important;
+
+      &::after {
+        display: inline-block;
+        content: '';
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      span {
+        display: none;
+        cursor: pointer;
+      }
+
+      span+span {
+        margin-left: 15px;
+      }
+
+      .#{$namespace}-upload-list__item-delete {
+        position: static;
+        font-size: inherit;
+        color: inherit;
+      }
+
+      &:hover {
+        opacity: 1;
+
+        span {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  @include m(picture) {
+    .#{$namespace}-upload-list__item {
+      overflow: hidden;
+      z-index: 0;
+      background-color: #FAFAFA;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      padding: 10px 10px 10px 90px;
+      height: 92px;
+      border: 1px dashed #d9d9d9;
+
+      .#{$namespace}-icon-check,
+      .#{$namespace}-icon-circle-check {
+        color: $--color-white;
+      }
+
+      .#{$namespace}-upload-list__item-status-label {
+        right: -10px;
+        top: -12px;
+        .#{$namespace}-icon-item-remove {
+          &:hover{
+            &::before{
+              background-image: url("./icon/rightremovehover@2x.png");
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .#{$namespace}-progress__text {
+          display: block;
+        }
+      }
+
+      &.is-success {
+        .#{$namespace}-upload-list__item-name {
+          line-height: 70px;
+          margin-top: 0;
+
+          i {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .#{$namespace}-upload-list__item-thumbnail {
+      vertical-align: middle;
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      float: left;
+      position: relative;
+      z-index: 1;
+      margin-left: -80px;
+      background-color: $--color-white;
+    }
+
+    .#{$namespace}-upload-list__item-name {
+      display: block;
+      margin-top: 20px;
+
+      i {
+        font-size: 70px;
+        line-height: 1;
+        position: absolute;
+        left: 9px;
+        top: 10px;
+      }
+    }
+
+    .#{$namespace}-upload-list__item-status-label {
+      position: absolute;
+      right: -9px;
+      top: -12px;
+      width: 46px;
+      height: 26px;
+      text-align: center;
+
+      i {
+        font-size: 12px;
+        margin-top: 12px;
+      }
+    }
+
+    .#{$namespace}-progress {
+      position: relative;
+      top: -7px;
+    }
+  }
+}
+
+.#{$namespace}-upload-list__table-section {
+  min-height: 40px;
+
+  @include e(table-progress) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include e(table-progress-text) {
+      margin: 10px 0 6px 0;
+      color: var(--el-text-color-low-black);
+
+      em {
+        color: var(--el-color-primary);
+        font-weight: bold;
+        font-style: normal;
+      }
+    }
+
+    .#{$namespace}-progress {
+      width: 194px;
+    }
+  }
+}
+
+.#{$namespace}-upload-list__table-table {
+  margin-top: 10px;
+
+  tr {
+    td.#{$namespace}-table__cell {
+      background: var(--el-color-white) !important;
+      border-bottom: 1px solid #eee;
+      height: 37px
+    }
+  }
+
+  th {
+    background: #eee;
+
+    .cell {
+      background: #eee;
+
+    }
+  }
+}
+
+@include b(upload-cover) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 10;
+  cursor: default;
+  @include utils-vertical-center;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(label) {
+    position: absolute;
+    right: -15px;
+    top: -6px;
+    width: 40px;
+    height: 24px;
+    background: #13ce66;
+    text-align: center;
+    transform: rotate(45deg);
+    box-shadow: 0 0 1pc 1px rgba(0, 0, 0, 0.2);
+
+    i {
+      font-size: 12px;
+      margin-top: 11px;
+      transform: rotate(-45deg);
+      color: #fff;
+    }
+  }
+
+  @include e(progress) {
+    display: inline-block;
+    vertical-align: middle;
+    position: static;
+    width: 243px;
+
+    +.#{$namespace}-upload__inner {
+      opacity: 0;
+    }
+  }
+
+  @include e(content) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(interact) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000, 0.72);
+    text-align: center;
+
+    .btn {
+      display: inline-block;
+      color: $--color-white;
+      font-size: 14px;
+      cursor: pointer;
+      vertical-align: middle;
+      transition: none !important;
+      margin-top: 60px;
+
+      i {
+        margin-top: 0;
+      }
+
+      span {
+        opacity: 0;
+        transition: none !important;
+      }
+
+      &:not(:first-child) {
+        margin-left: 35px;
+      }
+
+      &:hover {
+        transform: translateY(-13px);
+
+        span {
+          opacity: 1;
+        }
+      }
+
+      i {
+        color: $--color-white;
+        display: block;
+        font-size: 24px;
+        line-height: inherit;
+        margin: 0 auto 5px;
+      }
+    }
+  }
+
+  @include e(title) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $--color-white;
+    height: 36px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal;
+    text-align: left;
+    padding: 0 10px;
+    margin: 0;
+    line-height: 36px;
+    font-size: 14px;
+    color: var(--el-text-color-primary);
+  }
+
+  +.#{$namespace}-upload__inner {
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.cropper-content{
+  height: 300px;
+}
+
+.cut-upload {
+  .el-dialog__body{
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .el-dialog__footer{
+    border-top: 1px solid #ddd;
+  }
+  .lyj-cropper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    direction: ltr;
+    touch-action: none;
+    text-align: left;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC');
+  }
+
+  .cropper-box,
+  .cropper-box-canvas,
+  .cropper-drag-box,
+  .cropper-crop-box,
+  .cropper-face {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+  }
+
+  .cropper-box-canvas img {
+    position: relative;
+    text-align: left;
+    user-select: none;
+    transform: none;
+    max-width: none;
+    max-height: none;
+  }
+
+  .cropper-box {
+    overflow: hidden;
+  }
+
+  .cropper-move {
+    cursor: move;
+  }
+
+  .cropper-crop {
+    cursor: crosshair;
+  }
+
+  .cropper-modal {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .cropper-crop-box {
+    /*border: 2px solid #39f;*/
+  }
+
+  .cropper-view-box {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    outline: 1px solid #39f;
+    outline-color: rgba(51, 153, 255, 0.75);
+    user-select: none;
+  }
+
+  .cropper-view-box img {
+    user-select: none;
+    text-align: left;
+    max-width: none;
+    max-height: none;
+  }
+
+  .cropper-face {
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.1;
+  }
+
+  .crop-info {
+    position: absolute;
+    left: 0px;
+    min-width: 65px;
+    text-align: center;
+    color: white;
+    line-height: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 12px;
+  }
+
+  .crop-line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
+
+  .line-w {
+    top: -3px;
+    left: 0;
+    height: 5px;
+    cursor: n-resize;
+  }
+
+  .line-a {
+    top: 0;
+    left: -3px;
+    width: 5px;
+    cursor: w-resize;
+  }
+
+  .line-s {
+    bottom: -3px;
+    left: 0;
+    height: 5px;
+    cursor: s-resize;
+  }
+
+  .line-d {
+    top: 0;
+    right: -3px;
+    width: 5px;
+    cursor: e-resize;
+  }
+
+  .crop-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    opacity: 0.75;
+    background-color: #39f;
+    border-radius: 100%;
+  }
+
+  .point1 {
+    top: -4px;
+    left: -4px;
+    cursor: nw-resize;
+  }
+
+  .point2 {
+    top: -5px;
+    left: 50%;
+    margin-left: -3px;
+    cursor: n-resize;
+  }
+
+  .point3 {
+    top: -4px;
+    right: -4px;
+    cursor: ne-resize;
+  }
+
+  .point4 {
+    top: 50%;
+    left: -4px;
+    margin-top: -3px;
+    cursor: w-resize;
+  }
+
+  .point5 {
+    top: 50%;
+    right: -4px;
+    margin-top: -3px;
+    cursor: e-resize;
+  }
+
+  .point6 {
+    bottom: -5px;
+    left: -4px;
+    cursor: sw-resize;
+  }
+
+  .point7 {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -3px;
+    cursor: s-resize;
+  }
+
+  .point8 {
+    bottom: -5px;
+    right: -4px;
+    cursor: se-resize;
+  }
+
+  @media screen and (max-width: 500px) {
+    .crop-point {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      opacity: 0.45;
+      background-color: #39f;
+      border-radius: 100%;
+    }
+
+    .point1 {
+      top: -10px;
+      left: -10px;
+    }
+
+    .point2,
+    .point4,
+    .point5,
+    .point7 {
+      display: none;
+    }
+
+    .point3 {
+      top: -10px;
+      right: -10px;
+    }
+
+    .point4 {
+      top: 0;
+      left: 0;
+    }
+
+    .point6 {
+      bottom: -10px;
+      left: -10px;
+    }
+
+    .point8 {
+      bottom: -10px;
+      right: -10px;
+    }
+  }
+  .previews-tip{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 16px 0 8px 0px;
+  }
+}

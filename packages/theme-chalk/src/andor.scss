@@ -1,0 +1,68 @@
+ .relative{
+   position: relative;
+ }
+ .flex-1{
+   flex-grow: 1;
+ }
+ .andor-item{
+     padding: 6px 0px 6px 10px;
+ }
+ .andor-item_node{
+     display: flex;
+     align-items: center;
+     .opt-text{
+         font-size: 13px;
+         color: #3188e8;
+         cursor: pointer;
+         margin-left: 12px;
+     }
+     .opt-text:hover{
+        text-decoration: underline
+     }
+     .add-icon{
+        margin-left: 12px;
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(./icon/circle-add-solid.png);
+     }
+     .add-icon:hover{
+        background-image: url(./icon/circle-add-solid-hover.png);
+     }
+     .reduce-icon{
+         margin-left: 12px;
+         cursor: pointer;
+         width: 18px;
+         height: 18px;
+         background-position: center center;
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-image: url(./icon/circle-reduce-solid.png);
+     }
+     .reduce-icon:hover{
+        background-image: url(./icon/circle-reduce-solid-hover.png);
+     }
+ }
+
+ .relation-box{
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 32px;
+   height: 100%;
+
+   .relation-border{
+    z-index: 100;
+    height: 100%;
+    width: 16px;
+    left: 16px;
+    position: absolute;
+    border-left: 1px solid #d8d8d8;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+   }
+ }

@@ -1,0 +1,29 @@
+{
+  "zh-CN": {
+    "home": "ly-ui - 网站快速成型工具",
+    "other": "PC端其他组件 | ly-ui",
+    "otherdoc": "ui组件 | ly-ui",
+    "component": "组件 | ly-ui",
+    "resource": "资源 | ly-ui"
+  },
+  "en-US": {
+    "home": "ly-ui - A Desktop UI Toolkit for Web",
+    "component": "Component | ly-ui",
+    "resource": "Resource | ly-ui"
+  },
+  "es": {
+    "home": "ly-ui - Un kit de interfaz de usuario para la web",
+    "component": "Componentes | ly-ui",
+    "resource": "Recursos | ly-ui"
+  },
+  "fr-FR": {
+    "home": "ly-ui - Un kit de composants d'interface pour le web",
+    "component": "Composants | ly-ui",
+    "resource": "Ressources | ly-ui"
+  },
+  "jp": {
+    "home": "ly-ui - WebのためのデスクトップUIツールキット",
+    "component": "コンポーネント | ly-ui",
+    "resource": "リソース | ly-ui"
+  }
+}

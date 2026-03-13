@@ -1,0 +1,814 @@
+@import 'mixins/mixins';
+@import 'mixins/var';
+@import 'common/var';
+
+@include b(table) {
+  @include set-component-css-var('table', $--table);
+}
+
+@include b(table) {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: fit-content;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--el-table-background-color);
+  font-size: 13px;
+  color: var(--el-table-font-color);
+
+  // 数据为空
+  @include e(empty-block) {
+    min-height: 60px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include e(empty-text) {
+    // min-height doesn't work in IE10 and IE11 https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+    // set empty text line height up to contrainer min-height as workaround.
+    line-height: 22px;
+    width: 50%;
+    color: var(--el-text-color-secondary);
+  }
+
+  @include e(empty-font) {
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+  }
+
+  // 展开行
+  @include e(expand-column) {
+    .cell {
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  @include e(expand-icon) {
+    position: relative;
+    cursor: pointer;
+    color: var(--el-text-color-regular);
+    font-size: 12px;
+    transition: transform var(--el-transition-duration-fast) ease-in-out;
+    height: 20px;
+
+    @include m(expanded) {
+      transform: rotate(90deg);
+    }
+
+    >.#{$namespace}-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -5px;
+      margin-top: -5px;
+    }
+  }
+
+  @include e(expanded-cell) {
+    background-color: var(--el-table-expanded-cell-background-color);
+
+    // 纯属为了增加权重
+    &[class*='cell'] {
+      padding: 20px 50px;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  @include e(placeholder) {
+    display: inline-block;
+    width: 20px;
+  }
+
+  @include e(append-wrapper) {
+    // 避免外边距重合 https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing
+    overflow: hidden;
+  }
+
+  @include m(fit) {
+    border-right: 0;
+    border-bottom: 0;
+
+    .#{$namespace}-table__cell.gutter {
+      border-right-width: 0;
+    }
+  }
+
+  @include m(scrollable-x) {
+    .#{$namespace}-table__body-wrapper {
+      overflow-x: auto;
+    }
+  }
+
+  @include m(scrollable-y) {
+    .#{$namespace}-table__body-wrapper {
+      overflow-y: auto;
+    }
+  }
+
+  thead {
+    color: var(--el-table-header-font-color);
+    font-weight: 500;
+
+    &.is-group {
+      th.#{$namespace}-table__cell {
+        background: #F5F5F5;
+        // border: var(--el-table-border);
+        // text-align: center;
+      }
+    }
+  }
+
+  .#{$namespace}-table__cell {
+    padding: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+
+    @include when(center) {
+      text-align: center;
+    }
+
+    @include when(right) {
+      text-align: right;
+    }
+
+    &.gutter {
+      width: 15px;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      padding: 0;
+    }
+
+    &.is-hidden {
+      >* {
+        visibility: hidden;
+      }
+    }
+  }
+
+  @include m(medium) {
+    .#{$namespace}-table__cell {
+      padding: 10px 0;
+    }
+  }
+
+  @include m(small) {
+    font-size: 12px;
+
+    .#{$namespace}-table__cell {
+      padding: 8px 0;
+    }
+  }
+
+  @include m(mini) {
+    font-size: 12px;
+
+    .#{$namespace}-table__cell {
+      padding: 6px 0;
+    }
+  }
+
+  tr {
+    will-change: background-color;
+    background-color: var(--el-table-tr-background-color);
+    transition: background-color 0.1s ease-in-out, transform 0.1s ease-in-out;
+    input[type='checkbox'] {
+      margin: 0;
+    }
+  }
+
+  th.#{$namespace}-table__cell.is-leaf,
+  td.#{$namespace}-table__cell {
+    border-bottom: var(--el-table-border);
+    border-bottom: none;
+  }
+
+  th.#{$namespace}-table__cell.is-sortable {
+    cursor: pointer;
+
+    .caret-wrapper {
+      display: none;
+
+      &.always-show {
+        display: inline-flex;
+      }
+    }
+
+    &:hover {
+      color: var(--el-color-primary);
+    }
+
+    &:hover .caret-wrapper {
+      display: inline-flex;
+
+      .sort-caret {
+        background-image: url(./icon/sort-caret-hover.png);
+      }
+    }
+
+    &.ascending:hover .sort-caret {
+      background-image: url(./icon/ascending-hover.png);
+    }
+
+    &.descending:hover .sort-caret {
+      background-image: url(./icon/descending-hover.png);
+    }
+  }
+
+  th.#{$namespace}-table__cell {
+    overflow: hidden;
+    user-select: none;
+    background-color: var(--el-table-header-background-color);
+
+    // &:first-child {
+    //   padding-left: 6px;
+    // }
+    // &:last-child {
+    //   padding-left: 6px;
+    // }
+    &:hover::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      width: 2px;
+      height: 24px;
+      border-radius: 2px;
+      background-color: #DFE6EE;
+    }
+
+    >.cell {
+      display: inline-block;
+      box-sizing: border-box;
+      position: relative;
+      vertical-align: middle;
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &.highlight {
+        color: var(--el-color-primary);
+      }
+    }
+
+    &.required>div::before {
+      display: inline-block;
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff4d51;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  td.#{$namespace}-table__cell {
+    div {
+      box-sizing: border-box;
+    }
+
+    &.gutter {
+      width: 0;
+    }
+  }
+
+  th.#{$namespace}-table__cell.drag-hover {
+    &:hover::after {
+      background-color: var(--el-color-primary);
+    }
+  }
+
+  .cell {
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    line-height: 18px;
+    padding: 6px 15px;
+
+    &.#{$namespace}-tooltip {
+      white-space: nowrap;
+      min-width: 50px;
+    }
+
+    .#{$namespace}-checkbox {
+      height: 100%;
+      line-height: 1;
+      top: 1px;
+    }
+  }
+
+  // 拥有多级表头
+  @include m((group, border)) {
+    border: var(--el-table-border);
+
+    @include share-rule(border-pseudo) {
+      content: '';
+      position: absolute;
+      background-color: var(--el-table-border-color);
+      z-index: 1;
+    }
+
+    // 表格右部伪 border
+    &::after {
+      @include extend-rule(border-pseudo);
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  // 表格底部伪 border，总是有的
+  &::before {
+    @include extend-rule(border-pseudo);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    // height: 1px;
+    height: 0px;
+  }
+
+  // table--border
+  @include m(border) {
+    width: fit-content;
+    border-right: none;
+    border-bottom: none;
+
+    // fix: #1013
+    // &.#{$namespace}-loading-parent--relative {
+    //   border-color: transparent;
+    // }
+
+    .#{$namespace}-table__cell {
+      border-right: var(--el-table-border);
+      // border-right: none;
+
+      &:first-child .cell {
+        padding-left: 10px;
+      }
+    }
+
+    th.#{$namespace}-table__cell.gutter:last-of-type {
+      border-bottom: var(--el-table-border);
+      border-bottom-width: 1px;
+      // border-bottom: none;
+    }
+
+    & th.#{$namespace}-table__cell {
+      border-bottom: var(--el-table-border);
+      // border-bottom: none;
+    }
+
+    th.#{$namespace}-table__cell.is-leaf,
+    td.#{$namespace}-table__cell {
+      border-bottom: var(--el-table-border);
+      text-align: center;
+    }
+
+    th.#{$namespace}-table__cell.is-leaf {
+      background-color: #EEE;
+    }
+
+    th.#{$namespace}-table__cell>.cell {
+      padding: 8px;
+    }
+
+    td.#{$namespace}-table__cell>.cell {
+      padding: 6px 8px;
+    }
+  }
+
+  @include m(hidden) {
+    visibility: hidden;
+  }
+
+  @include e((fixed, fixed-right)) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: var(--el-table-fixed-box-shadow);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--el-border-color-lighter);
+      z-index: 4;
+    }
+  }
+
+  @include e(fixed-right-patch) {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    background-color: var(--el-table-header-background-color);
+    // border-bottom: var(--el-table-border);
+    border-bottom: none;
+  }
+
+  @include e(fixed-right) {
+    top: 0;
+    left: auto;
+    right: 0;
+
+    .#{$namespace}-table__fixed-header-wrapper,
+    .#{$namespace}-table__fixed-body-wrapper,
+    .#{$namespace}-table__fixed-footer-wrapper {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  @include e(fixed-header-wrapper) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+  }
+
+  @include e(fixed-footer-wrapper) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+
+    & tbody td.#{$namespace}-table__cell {
+      border-top: var(--el-table-border);
+      background-color: var(--el-table-row-hover-background-color);
+      color: var(--el-table-font-color);
+    }
+  }
+
+  @include e(fixed-body-wrapper) {
+    position: absolute;
+    left: 0;
+    top: 37px;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  @include e((header-wrapper, body-wrapper, footer-wrapper)) {
+    width: 100%;
+  }
+
+  @include e(footer-wrapper) {
+    margin-top: -1px;
+
+    td.#{$namespace}-table__cell {
+      border-top: var(--el-table-border);
+      border-bottom: var(--el-table-border);
+    }
+  }
+
+  @include e((header, body, footer)) {
+    table-layout: fixed;
+    border-collapse: separate;
+  }
+
+  @include e((header-wrapper, footer-wrapper)) {
+    overflow: hidden;
+
+    & tbody td.#{$namespace}-table__cell {
+      background-color: #F5F5F5;
+      color: var(--el-table-font-color);
+    }
+  }
+
+  @include e(body-wrapper) {
+    overflow: hidden;
+    position: relative;
+
+    @include when(scrolling-none) {
+
+      ~.#{$namespace}-table__fixed,
+      ~.#{$namespace}-table__fixed-right {
+        box-shadow: none;
+      }
+    }
+
+    @include when(scrolling-left) {
+      ~.#{$namespace}-table__fixed {
+        box-shadow: none;
+      }
+    }
+
+    @include when(scrolling-right) {
+      ~.#{$namespace}-table__fixed-right {
+        box-shadow: none;
+      }
+    }
+
+    .#{$namespace}-table--border {
+      @include when(scrolling-right) {
+        ~.#{$namespace}-table__fixed-right {
+          border-left: var(--el-table-border);
+        }
+      }
+
+      @include when(scrolling-left) {
+        ~.#{$namespace}-table__fixed {
+          // border-right: var(--el-table-border);
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  .caret-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    height: 12px;
+    width: 12px;
+    // vertical-align: middle;
+    cursor: pointer;
+    overflow: initial;
+    position: relative;
+    left: 2px;
+    top: 1px;
+  }
+
+  .sort-caret {
+    width: 12px;
+    height: 12px;
+    // border: solid 5px transparent;
+    position: absolute;
+    // left: 7px;
+    background-position: center center;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-image: url(./icon/sort-caret.png);
+  }
+
+  .ascending .sort-caret {
+    background-image: url(./icon/ascending.png);
+  }
+
+  .descending .sort-caret {
+    background-image: url(./icon/descending.png);
+  }
+
+  .hidden-columns {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  @include m(striped) {
+    & .#{$namespace}-table__body {
+      & tr.#{$namespace}-table__row--striped {
+        td.#{$namespace}-table__cell {
+          background: #F1F2F6;
+        }
+
+        &.current-row td.#{$namespace}-table__cell {
+          background-color: var(--el-table-current-row-background-color);
+        }
+      }
+    }
+  }
+
+  @include e(body) {
+    tr.hover-row {
+
+      &,
+      &.#{$namespace}-table__row--striped {
+
+        &,
+        &.current-row {
+          >td.#{$namespace}-table__cell {
+            background-color: var(--el-table-row-hover-background-color);
+          }
+        }
+      }
+    }
+
+    tr.current-row>td.#{$namespace}-table__cell {
+      background-color: var(--el-table-current-row-background-color);
+    }
+  }
+
+  @include e(column-resize-proxy) {
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -2px;
+    background-color: var(--el-color-primary);
+    // border-left: var(--el-table-border);
+    z-index: 10;
+  }
+
+  @include e(column-filter-trigger) {
+    display: inline-block;
+    cursor: pointer;
+
+    & i {
+      color: var(--el-color-info);
+      font-size: 12px;
+      vertical-align: middle;
+      transform: scale(0.75);
+    }
+  }
+
+  @include m(enable-row-transition) {
+    .#{$namespace}-table__body td.#{$namespace}-table__cell {
+      // &:first-child {
+      //   padding-left: 6px;
+      // }
+      // &:last-child {
+      //   padding-left: 6px;
+      // }
+      transition: background-color 0.25s ease;
+    }
+  }
+
+  @include m(enable-row-hover) {
+    .#{$namespace}-table__body tr:hover>td.#{$namespace}-table__cell {
+      background-color: var(--el-table-row-hover-background-color);
+    }
+  }
+
+  @include m(fluid-height) {
+
+    .#{$namespace}-table__fixed,
+    .#{$namespace}-table__fixed-right {
+      bottom: 0;
+      overflow: hidden;
+    }
+  }
+
+  [class*='#{$namespace}-table__row--level'] {
+    .#{$namespace}-table__expand-icon {
+      display: inline-block;
+      width: 20px;
+      line-height: 20px;
+      height: 20px;
+      text-align: center;
+      margin-right: 3px;
+    }
+  }
+
+  .svg-icon {
+    width: 1em;
+    height: 1em;
+    line-height: 22px;
+    fill: currentColor;
+    overflow: hidden;
+  }
+}
+
+.explain-btn {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.el-icon-question {
+  color: #3188e8;
+  font-size: 12px;
+}
+
+.table-cell-tooltip {
+  line-height: 18px !important;
+  border-radius: 4px !important;
+  background: #1f2329e6 !important;
+  box-shadow: 0px 3px 6px 0px rgba(165, 165, 165, 0.5);
+}
+
+.el-popper.table-cell-tooltip.is-dark .el-popper__arrow:before {
+  background: #1f2329e6 !important;
+}
+
+
+
+.ly-table-page-v2 .el-table__header-wrapper{
+  width:calc(100% - 8px);
+}
+.ly-table-page-v2 .el-table--enable-row-transition .el-table__body td.el-table__cell{
+    background:#fff;
+}
+.ly-table-page-v2 .el-table__fixed{
+}
+.ly-table-page-v2 .el-table .el-table__fixed-right{
+  right:8px;
+}
+.ly-table-page-v2 .el-table__fixed .el-table__body tbody,.ly-table-page-v2 .el-table__fixed-right .el-table__body tbody{
+  height:100%;
+}
+.ly-table-page-v2 .el-table__fixed-right .el-table__body{
+  width:auto !important;
+}
+.ly-table-page-v2 .el-table__fixed,.ly-table-page-v2 .el-table__fixed-right{
+  pointer-events: none;
+}
+.ly-table-page-v2  .el-table .el-table__body-wrapper.is-scrolling-right~.el-table__fixed-right{
+  box-shadow: var(--el-table-fixed-box-shadow);
+}
+.ly-table-page-v2 .el-table__fixed::-webkit-scrollbar,.ly-table-page-v2 .el-table__fixed-right::-webkit-scrollbar{
+  display: none;
+}
+// .el-table-header-fixed .header-sticky{
+//   position: fixed;
+//   z-index:998;
+// }
+// .el-table-header-fixed .el-table__fixed-header-wrapper{
+//   z-index:unset;
+// }
+// .el-table-header-fixed  .el-table__fixed{
+//   z-index:999;
+// }
+// .el-table-header-fixed  .head-fixed-wrap{
+//   overflow: hidden;
+//   height:100%;
+// }
+// .el-table-header-fixed .el-table__fixed-right .header-sticky{
+//   z-index:999;
+//   display: flex;
+//   justify-content: flex-end;
+// }
+// .el-table-header-fixed .el-table__fixed-right .header-sticky .el-table__header{
+//   align-self: flex-start;
+// }
+// .el-table-header-fixed  .head-fixed-wrap table{
+//   height:100%;
+// }
+.el-table-header-fixed.el-table{
+  overflow: unset;
+}
+.el-table-header-fixed .el-table__fixed,.el-table-header-fixed .el-table__fixed-right{
+  overflow-x:unset;
+  overflow-y:unset;
+}
+.el-table-header-fixed .el-table__fixed .el-table__fixed-body-wrapper{
+  width:100%;
+}
+.el-table-header-fixed .el-table__fixed-right .el-table__fixed-body-wrapper{
+  width:100%;
+  height:100%;
+}
+.el-table-header-fixed .el-table__fixed-right .el-table__fixed-body-wrapper .el-table__body{
+  position: absolute;
+  right:0;
+  left:auto;
+  z-index:999;
+}
+.el-table-header-fixed .el-table__fixed-right .el-table__fixed-header-wrapper > div{
+  position: absolute;
+  left: auto;
+  top: 0;
+  right:0;
+}
+.el-table-header-fixed .el-table__header-wrapper,.el-table-header-fixed .el-table__fixed-header-wrapper{
+  position:sticky;
+  top:0;
+  z-index:999!important;
+  overflow: hidden;
+}
+
+.el-table-scrollbar-fixed .footer-sticky{
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  width: 100%;
+  height: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0px;
+}
+.el-table-scrollbar-fixed .footer-scroll{
+  position: relative;
+  z-index: 999;
+  height:1px;
+}
+.el-table-scrollbar-fixed.el-table--scrollable-x .el-table__body-wrapper::-webkit-scrollbar{
+   height:0;
+}
+.el-table-scrollbar-fixed .el-table__fixed-footer-wrapper{
+  overflow: hidden;
+  max-width: 100%;
+}

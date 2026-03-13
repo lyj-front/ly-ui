@@ -1,0 +1,11 @@
+.demo-select .#{$namespace}-select {
+  width: 240px;
+}
+
+.demo-block .#{$namespace}-select {
+  width: 180px;
+}
+
+.demo-block .#{$namespace}-pagination .#{$namespace}-select{
+  width: 90px;
+}

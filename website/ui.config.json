@@ -1,0 +1,464 @@
+{
+  "zh-CN": [
+    {
+      "name": "前端组件平台",
+      "groups": [
+        {
+          "groupName": "新系统",
+          "list": [
+            {
+              "path": "/button",
+              "main": "new-sys/button",
+              "type": 1,
+              "title": "按钮 Button"
+            },
+            {
+              "path": "/label",
+              "main": "new-sys/label",
+              "type": 1,
+              "title": "标签 Label"
+            },
+            {
+              "path": "/radio",
+              "main": "new-sys/radio",
+              "type": 1,
+              "title": "单选框 Radio"
+            },
+            {
+              "path": "/checkbox",
+              "main": "new-sys/checkbox",
+              "type": 1,
+              "title": "多选框 Checkbox"
+            },
+            {
+              "path": "/syscomboSelect",
+              "main": "new-sys/comboSelect",
+              "type": 1,
+              "title": "可搜索下拉框 ComboSelect"
+            },
+            {
+              "path": "/syscheckSelect",
+              "main": "new-sys/checkSelect",
+              "type": 1,
+              "title": "多选下拉框 CheckSelect"
+            },
+            {
+              "path": "/sysmultiSelect",
+              "main": "new-sys/multiSelect",
+              "type": 1,
+              "title": "多选下拉搜索 MultiSelect"
+            },
+            {
+              "path": "/table",
+              "main": "new-sys/table",
+              "type": 1,
+              "title": "表格 Table"
+            },
+            {
+              "path": "/tableFixed",
+              "main": "new-sys/tableFixed",
+              "type": 1,
+              "title": "表格固定行列 TableFixed"
+            },
+            {
+              "path": "/datetimepicker",
+              "main": "new-sys/datetimepicker",
+              "type": 1,
+              "title": "日期选择器 WdatePicker"
+            },
+            {
+              "path": "/form",
+              "main": "new-sys/form",
+              "type": 1,
+              "title": "表单 Form"
+            },
+            {
+              "path": "/formSubmit",
+              "main": "new-sys/formSubmit",
+              "type": 1,
+              "title": "表单验证 FormSubmit"
+            },
+            {
+              "path": "/syszhiyin",
+              "main": "new-sys/zhiyin",
+              "type": 1,
+              "title": "指引 OperGuide"
+            },
+            {
+              "path": "/sysdialog",
+              "main": "new-sys/dialog",
+              "type": 1,
+              "title": "弹出框/提示框 Dialog"
+            },
+            {
+              "path": "/sysupload",
+              "main": "new-sys/upload",
+              "type": 1,
+              "title": "上传 Upload"
+            },
+            {
+              "path": "/sysviewer",
+              "main": "new-sys/viewer",
+              "type": 1,
+              "title": "图片预览 Viewer"
+            },
+            {
+              "path": "/viewerIframe",
+              "main": "new-sys/viewerIframe",
+              "type": 1,
+              "title": "iframe图片预览 ViewerIframe"
+            },
+            {
+              "path": "/syscropper",
+              "main": "new-sys/cropper",
+              "type": 1,
+              "title": "图片裁剪 Cropper"
+            },
+            {
+              "path": "/WangEditor",
+              "main": "new-sys/richTextEditor",
+              "type": 1,
+              "title": "富文本 WangEditor"
+            },
+            {
+              "path": "/sysloading",
+              "main": "new-sys/loading",
+              "type": 1,
+              "title": "加载 Loading"
+            },
+            {
+              "path": "/tree",
+              "main": "new-sys/tree",
+              "type": 1,
+              "title": "树形控件 Tree"
+            },
+            {
+              "path": "/badge",
+              "main": "new-sys/badge",
+              "type": 1,
+              "title": "标记 Bedge"
+            },
+            {
+              "path": "/steps",
+              "main": "new-sys/steps",
+              "type": 1,
+              "title": "步骤条 Steps"
+            },
+            {
+              "path": "/timeline",
+              "main": "new-sys/timeline",
+              "type": 1,
+              "title": "时间线 Timeline"
+            },
+            {
+              "path": "/tooltip",
+              "main": "new-sys/tooltip",
+              "type": 1,
+              "title": "文字提示 Tooltip"
+            },
+            {
+              "path": "/syslinkage",
+              "main": "new-sys/linkage",
+              "type": 1,
+              "title": "城市区域联动 linkage"
+            },
+            {
+              "path": "/lyCascader",
+              "main": "new-sys/lyCascader",
+              "type": 1,
+              "title": "级联 Cascader"
+            },
+            {
+              "path": "/sysmyPagination",
+              "main": "new-sys/myPagination",
+              "type": 1,
+              "title": "分页组件 myPagination"
+            },
+            {
+              "path": "/conventional",
+              "main": "new-sys/conventional",
+              "type": 1,
+              "title": "常用方法"
+            }
+          ]
+        },
+        {
+          "groupName": "房源PC",
+          "list": [
+            {
+              "path": "/lazyload",
+              "main": "fang-pc/lazyload",
+              "type": 1,
+              "title": "图片懒加载 lazyload"
+            },
+            {
+              "path": "/qrcode",
+              "main": "fang-pc/qrcode",
+              "type": 1,
+              "title": "二维码生成器 qrcode"
+            },
+            {
+              "path": "/imgDialog",
+              "main": "fang-pc/imgDialog",
+              "type": 1,
+              "title": "图片查看轮播 imgDialog"
+            }
+          ]
+        },
+        {
+          "groupName": "房源网WAP",
+          "list": [
+            {
+              "path": "/dialog",
+              "main": "fang-wap/dialog",
+              "type": 1,
+              "title": "弹出框组件 dialog"
+            },
+            {
+              "path": "/mobileSelect",
+              "main": "fang-wap/mobileSelect",
+              "type": 1,
+              "title": "选择 mobileSelect"
+            },
+            {
+              "path": "/swiper",
+              "main": "fang-wap/swiper",
+              "type": 1,
+              "title": "触摸滑动 swiper"
+            },
+            {
+              "path": "/showSwiper",
+              "main": "fang-wap/showSwiper",
+              "type": 1,
+              "title": "点击查看大图 showSwiper"
+            },
+            {
+              "path": "/upload",
+              "main": "fang-wap/upload",
+              "type": 1,
+              "title": "移动端上传七牛 upload"
+            },
+            {
+              "path": "/clipboard",
+              "main": "fang-wap/clipboard",
+              "type": 1,
+              "title": "复制 clipboard"
+            },
+            {
+              "path": "/iphoneX",
+              "main": "fang-wap/iphoneX",
+              "type": 1,
+              "title": "iphoneX底部兼容 iphoneX"
+            },
+            {
+              "path": "/envokApp",
+              "main": "fang-wap/envokApp",
+              "type": 1,
+              "title": "浏览器中唤醒App envokApp"
+            },
+            {
+              "path": "/dropload",
+              "main": "fang-wap/dropload",
+              "type": 1,
+              "title": "列表加载刷新 dropload"
+            },
+            {
+              "path": "/tongji",
+              "main": "fang-wap/tongji",
+              "type": 1,
+              "title": "wap埋点 tongji"
+            },
+            {
+              "path": "/runApp",
+              "main": "fang-wap/runApp",
+              "type": 1,
+              "title": "房源网APP方法 runApp"
+            }
+          ]
+        },
+        {
+          "groupName": "轻应用",
+          "list": [
+            {
+              "path": "/fyyapi",
+              "main": "qyy/fyyapi",
+              "type": 1,
+              "title": "房源网接口"
+            },
+            {
+              "path": "/lbgapi",
+              "main": "qyy/lbgapi",
+              "type": 1,
+              "title": "乐办公接口"
+            }
+          ]
+        },
+        {
+          "groupName": "小程序",
+          "list": [
+            {
+              "path": "/stat",
+              "main": "mini/stat",
+              "type": 1,
+              "title": "小程序埋点规范"
+            }
+          ]
+        },
+        {
+          "groupName": "其他",
+          "list": [
+            {
+              "path": "/aes",
+              "main": "other/aes",
+              "type": 1,
+              "title": "AES加解密"
+            },
+            {
+              "path": "/record",
+              "main": "other/record",
+              "type": 1,
+              "title": "录音播音组件"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "后台公共插件API",
+      "children": [
+        {
+          "path": "/comboSelect",
+          "main": "comboSelect",
+          "type": 2,
+          "name": "可搜索下拉框"
+        },
+        {
+          "path": "/iCheck",
+          "main": "iCheck",
+          "type": 2,
+          "name": "单选多选美化插件"
+        },
+        {
+          "path": "/wdatePicker",
+          "main": "WdatePicker",
+          "type": 2,
+          "name": "日期插件"
+        },
+        {
+          "path": "/olddialog",
+          "main": "dialog",
+          "type": 2,
+          "name": "弹框"
+        },
+        {
+          "path": "/tableSort",
+          "main": "tableSort",
+          "type": 2,
+          "name": "表格排序"
+        },
+        {
+          "path": "/checkSelect",
+          "main": "checkSelect",
+          "type": 2,
+          "name": "多选下拉"
+        },
+        {
+          "path": "/multiSelect",
+          "main": "multiSelect",
+          "type": 2,
+          "name": "多选下拉含搜索"
+        },
+        {
+          "path": "/multiInput",
+          "main": "multiInput",
+          "type": 2,
+          "name": "模糊搜索多选"
+        },
+        {
+          "path": "/uploadifive",
+          "main": "uploadifive",
+          "type": 2,
+          "name": "文件上传"
+        },
+        {
+          "path": "/cropper",
+          "main": "cropper",
+          "type": 2,
+          "name": "图片裁剪"
+        },
+        {
+          "path": "/viewer",
+          "main": "viewer",
+          "type": 2,
+          "name": "图片预览(viewer)"
+        },
+        {
+          "path": "/fancybox",
+          "main": "fancybox",
+          "type": 2,
+          "name": "图片预览(fancybox)"
+        },
+        {
+          "path": "/linkage",
+          "main": "linkage",
+          "type": 2,
+          "name": "城市级联动组件"
+        },
+        {
+          "path": "/myPagination",
+          "main": "myPagination",
+          "type": 2,
+          "name": "分页"
+        },
+        {
+          "path": "/validform",
+          "main": "validform",
+          "type": 2,
+          "name": "验证"
+        },
+        {
+          "path": "/zTree",
+          "main": "zTree",
+          "type": 2,
+          "name": "结构树"
+        },
+        {
+          "path": "/UEditor",
+          "main": "UEditor",
+          "type": 2,
+          "name": "富文本"
+        },
+        {
+          "path": "/zhiyin",
+          "main": "zhiyin",
+          "type": 2,
+          "name": "操作指引"
+        },
+        {
+          "path": "/loading",
+          "main": "loading",
+          "type": 2,
+          "name": "数据加载"
+        },
+        {
+          "path": "/public",
+          "main": "public",
+          "type": 2,
+          "name": "公共样式/脚本"
+        },
+        {
+          "path": "/modal",
+          "main": "modal",
+          "type": 2,
+          "name": "公共模态框"
+        },
+        {
+          "path": "/common",
+          "main": "common",
+          "type": 2,
+          "name": "常用js方法"
+        }
+      ]
+    }
+  ]
+}

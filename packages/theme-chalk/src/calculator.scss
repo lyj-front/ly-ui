@@ -1,0 +1,105 @@
+// 计算器
+.calculator-container {
+  height: 408px;
+  width: 364px;
+  padding: 12px 15px 0;
+
+  .errorRule {
+    padding-top: 10px;
+    color: #ee3939;
+    font-size: 14px;
+  }
+}
+
+.calc-wrapper {
+  width: 100%;
+  height: 188px;
+  // border: 1px solid #dddddd;
+  // border-right: none;
+  box-sizing: border-box;
+
+  .rule-btn {
+    width: 100%;
+    height: 100%;
+    float: left;
+
+    #tableCalc {
+      width: 364px;
+      font-size: 16px;
+      line-height: 27px;
+      border: none;
+      color: #000;
+      table-layout: fixed;
+
+      tr:first-child td {
+        border-top: 1px solid #dddddd;
+      }
+
+      [data-rule='back'] {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAAXNSR0IArs4c6QAAAadJREFUOBGdU79Lw1AQTh6xAf0LBF26OQmmbRCcA8W4dnKQgi6iq+AgBccORTeXKlShENChQnaHQGm6+GMRBAddGrI4VZqkflf6yiNJCXjwuLvv7r7cDyJLKaJp2hHgy5RQJiTHM0C2DeyBMXaA9xKPz/OjKFrDayliQqlUWg/DsC3L8kmv17sRY1m2rusSCCXGE9HZMoBH+C3XdRscJ10ul1XRn4cRPiEE2SLszng8fsvn87S/mRCZ53nPxWJxl4PI3xoMBh/oaoVjXDOQ0B7vMKaqKErFsqyQB0nbtv2L2Dm6bxIpkRGM1+x2u1+UI4pSKBTqKNjM5XK64zg/YpDb2OctyGhH18gN0ES93++f8bioGRKWAIygR2IgboPsc0q2gOu/x+PcZ6ZpHsJ5HQ6HHcMwiDwhfEzqDGR7fPxEIgBWq9UiVVUrsBXf99vwZ5engumF2zAbNCaND9IqSK/SjkI1E8GOVtHJN3aa+EPSCuMYfJRrkwtzTgnABpwnvFN0kyCeJaYYRBgEgZv49dDpDnZ1jwPs/+fXSxDSx9HpMdRFSiOZ0B/Ai6iZsQv9kQAAAABJRU5ErkJggg==);
+        background-image: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAAXNSR0IArs4c6QAAAadJREFUOBGdU79Lw1AQTh6xAf0LBF26OQmmbRCcA8W4dnKQgi6iq+AgBccORTeXKlShENChQnaHQGm6+GMRBAddGrI4VZqkflf6yiNJCXjwuLvv7r7cDyJLKaJp2hHgy5RQJiTHM0C2DeyBMXaA9xKPz/OjKFrDayliQqlUWg/DsC3L8kmv17sRY1m2rusSCCXGE9HZMoBH+C3XdRscJ10ul1XRn4cRPiEE2SLszng8fsvn87S/mRCZ53nPxWJxl4PI3xoMBh/oaoVjXDOQ0B7vMKaqKErFsqyQB0nbtv2L2Dm6bxIpkRGM1+x2u1+UI4pSKBTqKNjM5XK64zg/YpDb2OctyGhH18gN0ES93++f8bioGRKWAIygR2IgboPsc0q2gOu/x+PcZ6ZpHsJ5HQ6HHcMwiDwhfEzqDGR7fPxEIgBWq9UiVVUrsBXf99vwZ5engumF2zAbNCaND9IqSK/SjkI1E8GOVtHJN3aa+EPSCuMYfJRrkwtzTgnABpwnvFN0kyCeJaYYRBgEgZv49dDpDnZ1jwPs/+fXSxDSx9HpMdRFSiOZ0B/Ai6iZsQv9kQAAAABJRU5ErkJggg==) 1x,
+            url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAYAAAATFf3WAAAAAXNSR0IArs4c6QAAA5dJREFUWAm9l11IU1EcwN2mSemCXoSGRL70EhQ1dfhR+OLILAtqQVDQkyVkQRE+hKAP9VDQQwYR9eJD9CFEqH2BgUjSmPOlwKCXImgVIRRLN2dz/f7LM67znutdrh04no//1++e+/+fXR1FOTSv19uJ+vUcTFat6rDrobq6ei+6g6lUymXXJh96tgBra2u3J5PJVwQsdzgcX4HsdTqdC/kAMPOB/130YyIrNlMw7vFaNy4sLAyzV06fBbAtHA5PGHXyPa+pqSlSgE4r58CtQz6EciVjilM7PkGzssm3TAvY09Mjsrt0rwTl5LpgeyTzQjYt4NDQ0BVADi7C3OG1Xi0kmIplCkjFnkThvChxciNut7tDGViNpMQmK7nIGhsbNzQ1NUk+22rLAAnix/LGovU78u/w6Ojo75W8YdeNzhQJvlunK3CxWGwkGo0+swu5BBDnWzmxAaCkur+7XK7WycnJn7qAan/x5LpYl1HxT80gFRw6O+mNMzMzR5W91ZgBrK+vr5DrBLj1QMaBOxAKhT5YGSsZD/GJCpeLfIa+DDILTtLmMgV3W9lbjWnAurq6tXNzc4MobqancHACuNdWhtkyAo6ZQZrBUXAXs+11aycn5kgkEv0o+EQJuG6CPdAZWO2bQcbj8SA28lrTJ5cLnNg4qdhLjAFZ0PpxIOt/btmQHMAWcSavNVc4sXNiWCETacyn/85W97e0tPQtvj4bvCRYvzCsbU/lFXdg/FIsmJ+jIm3deboIKufUyaGXoK/RVbfOj9p3UoHzODvExpRsAtvHNbFHKeQyKjhsMjlH4TSzNq1uO77TVSx3XUlJSStw34B10R/6fL5tdhwoHTM4ybnsnMz1JDP3YDAY/EiwNiBjALr5/nvS0NDgUQBWow5O2awGMgMoznjiEIDyoQhjqpK7cdjv95epQLqxuLh4HtmsyLE3rdYsyHn00vo6n2p/CaBs4kg+qS7IHMgd09PT9wOBgOVnPr/Vv/igaCHf2q2uEgXJr1QzPwRhibFS037ycz/eBPCUOOBp+wh8ZiVn+ZJTpO3k6i3xt+wEVZCqqqrTgD2XNaCdGJ1VskKOWsCBgYEkF+4RYN4IEE90Dcj9hYSTWFpAEY6Pj0fJq31MI6IL5D0u8vQdJ/JCNG0OGoMvQo2xJxX9hVffS08ZdfI5J6Uy/3baApTg8no5wcdMLU89n6Diy/L6MAaLRCLvPR7PD/ZajPv/e/4HyNacPUEXt7kAAAAASUVORK5CYII=) 2x);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 18px;
+      }
+
+      td {
+        text-align: center;
+        cursor: pointer;
+        padding: 5px 8px;
+        border-bottom: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+
+        &:first-child {
+          border-left: 1px solid #dddddd;
+        }
+
+        &:hover {
+          background-color: #F9F9F9;
+        }
+      }
+
+      .disabled {
+        background-color: #F9F9F9;
+        color: #999;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.cus-input-container {
+  border: 1px solid #dddddd;
+  padding: 8px 8px 3px;
+  border-bottom: none;
+
+  .rule-thing {
+    line-height: 20px;
+    height: 36px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 13px;
+    color: #333333;
+    font-weight: 600;
+
+    .eval {
+      margin: 0 5px;
+    }
+  }
+
+  .rule-result {
+    font-size: 18px;
+    color: #333;
+    line-height: 28px;
+    font-weight: 600;
+    height: 28px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: right;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,84 @@
+@import 'mixins/mixins';
+@import 'mixins/var';
+@import 'common/var';
+
+@include b(empty) {
+  @include set-component-css-var('empty', $--empty);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  padding: var(--el-empty-padding);
+
+  @include e(image) {
+    width: var(--el-empty-image-width);
+
+    img {
+      user-select: none;
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      object-fit: contain;
+    }
+
+    svg {
+      fill: var(--el-svg-monochrome-grey);
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    @include e(baseimage) {
+      width: var(--el-empty-image-width);
+      height: var(--el-empty-image-height);
+      display: inline-block;
+      &.img-no-server{
+        background: url(./icon/serve-abnormal@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+      &.img-no-data{
+        background: url(./icon/no-data@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+      &.img-no-power{
+        background: url(./icon/no-authority@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+      &.img-no-page{
+        background: url(./icon/serve-abnormal@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+      &.img-no-network{
+        background: url(./icon/network-abnormal@2x.png) no-repeat center top;
+        background-size: 100%;
+      }
+    }
+  }
+
+  @include e(description) {
+    margin-top: var(--el-empty-description-margin-top);
+
+    p {
+      margin: 0;
+      font-size: var(--el-font-size-base);
+      color: var(--el-text-color-low-black);
+    }
+  }
+
+  @include e(bottom) {
+    margin-top: var(--el-empty-bottom-margin-top);
+  }
+}
+
+// @include b(empty-180) {
+//   width: 180px;
+//   height: 120px;
+// }
+
+// @include b(empty-110) {
+//   width: 110px;
+//   height: 110px;
+// }

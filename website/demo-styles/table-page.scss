@@ -1,0 +1,24 @@
+.demo-table-page {
+    .source {
+        > div:first-child {
+            // height: 500px;
+        }
+        .action-item-w {
+            width: 186px;
+        }
+        .mr10 {
+            margin-right: 10px;
+        }
+
+        .table-config-box {
+            position: relative;
+            height: 30px;
+            .right-but {
+                position: absolute;
+                top: 0;
+                right: 0;
+                line-height: 30px;
+            }
+        }
+    }
+}

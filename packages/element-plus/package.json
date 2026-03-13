@@ -1,0 +1,60 @@
+{
+  "name": "ly-ui",
+  "version": "1.5.14",
+  "description": "A Component Library for Vue 3",
+  "homepage": "http://172.16.3.120/lyj-front/lyui.git",
+  "keywords": [
+    "ly-ui",
+    "element",
+    "component library",
+    "ui",
+    "vue"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "style": "dist/index.css",
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "sideEffects": [
+    "dist/*",
+    "theme-chalk/*.css",
+    "theme-chalk/src/*.scss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+http://172.16.3.120/lyj-front/lyui.git"
+  },
+  "bugs": {
+    "url": "http://172.16.3.120/lyj-front/lyui.git"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "@element-plus/icons": "^0.0.11",
+    "@popperjs/core": "^2.10.1",
+    "@vueuse/core": "~6.1.0",
+    "async-validator": "^3.4.0",
+    "dayjs": "1.x",
+    "lodash": "^4.17.21",
+    "mitt": "^2.1.0",
+    "normalize-wheel": "^1.0.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "axios": "^0.22.0",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@element-plus/test-utils": "^0.0.5"
+  },
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
+  },
+  "web-types": "web-types.json",
+  "browserslist": [
+    "> 1%",
+    "not ie 11",
+    "not op_mini all"
+  ]
+}

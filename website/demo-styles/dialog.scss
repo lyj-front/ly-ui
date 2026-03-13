@@ -1,0 +1,21 @@
+.demo-block.demo-dialog {
+  .full-image {
+    width: 100%;
+  }
+  .#{$namespace}-dialog__wrapper {
+    margin: 0;
+  }
+  .#{$namespace}-select {
+    width: 300px;
+  }
+  .#{$namespace}-input {
+    width: 300px;
+  }
+  .#{$namespace}-button--text {
+    margin-right: 15px;
+  }
+}
+
+.demo-dialog-table .el-dialog__body {
+  padding-top: 0;
+}

@@ -1,0 +1,172 @@
+.oa-outer {
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.oa-btn {
+  height: 26px;
+  background: #ffffff;
+  border-radius: 2px;
+  padding: 5px 10px 4px 10px;
+  border: 1px solid #3188e8;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #3188e8;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.oa-line {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.oa-line .oa-line-item {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  margin-right: 20px;
+}
+
+.oa-line .oa-line-item:last-child {
+  margin-right: 0px;
+}
+
+.oa-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 18px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.oa-content {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 18px;
+  text-align: left;
+}
+
+.oa-image {
+  border-radius: 4px;
+}
+
+.oa-video {
+  position: relative;
+  line-height: 1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.oa-video::before {
+  position: absolute;
+  cursor: pointer;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.5);
+  border-radius: 4px;
+  background-image: url('https://i.leyoujia.com/hsl/images/play-b.png?v=1685541213933');
+  background-position: center;
+  background-size: 24px;
+  background-repeat: no-repeat;
+}
+
+.oa-link {
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #3188e8;
+  line-height: 18px;
+  margin-left: 8px;
+}
+
+.oa-hoverlink {
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.oa-hoverlink:hover {
+  font-weight: 400;
+  color: #3188e8;
+}
+
+.oa-table {
+  margin-bottom: 10px;
+  table-layout: fixed;
+  border-spacing: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  background-color: transparent;
+  border-left: 1px solid #ccc;
+}
+
+.oa-table thead {
+  height: 34px;
+}
+
+.oa-table thead tr th,
+.oa-table thead tr td {
+  background: #eeeeee;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 18px;
+  text-align: center;
+  padding: 4px 6px;
+}
+
+.oa-table tbody tr td {
+  background: white;
+  border: 1px solid #cccccc;
+  min-height: 27px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 18px;
+  padding: 4px 9px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oa-title {
+  height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.oa-title::before {
+  width: 4px;
+  height: 16px;
+  content: '';
+  margin-right: 4px;
+  display: inline-block;
+  background: #3188e8;
+}

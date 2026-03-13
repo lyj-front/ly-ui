@@ -1,0 +1,134 @@
+@import 'mixins/mixins';
+@import 'mixins/var';
+@import 'common/var';
+
+@include b(cascader-panel) {
+  @include set-component-css-var('cascader', $--cascader);
+}
+
+@include b(cascader-panel) {
+  display: flex;
+  border-radius: var(--el-cascader-menu-radius);
+  font-size: var(--el-cascader-menu-font-size);
+
+  @include when(bordered) {
+    border: var(--el-cascader-menu-border);
+    border-radius: var(--el-cascader-menu-radius);
+  }
+}
+
+@include b(cascader-menu) {
+  box-sizing: border-box;
+  color: var(--el-cascader-menu-font-color);
+  border-right: var(--el-cascader-menu-border);
+  border-left: var(--el-cascader-menu-border);
+  margin-left: 3px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 4px 0px rgba(165, 165, 165, 0.5);
+
+  &:first-child {
+    border-left: none;
+    margin-left: 0;
+  }
+  &:last-child {
+    border-right: none;
+  }
+
+  @include e(wrap) {
+    // Raise the priority
+    &.el-scrollbar__wrap {
+      height: 204px;
+    }
+  }
+
+  @include e(list) {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  @include e(hover-zone) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  @include e(empty-text) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--el-cascader-color-empty);
+  }
+}
+
+@include b(cascader-node) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 3px;
+  height: 30px;
+  width: 78px;
+  line-height: 30px;
+  outline: none;
+
+  &.is-selectable.in-active-path {
+    color: var(--el-cascader-menu-font-color);
+  }
+
+  &.in-active-path,
+  &.is-selectable.in-checked-path,
+  &.is-active {
+    background: var(--el-background-color-hover);
+  }
+
+  &:not(.is-disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: var(--el-background-color-hover);
+    }
+  }
+
+  @include when(disabled) {
+    color: var(--el-cascader-node-color-disabled);
+    cursor: not-allowed;
+  }
+
+  @include e(prefix) {
+    position: absolute;
+    left: 10px;
+  }
+
+  @include e(postfix) {
+    position: absolute;
+    right: 10px;
+    color: var(--el-text-color-placeholder);
+  }
+
+  @include e(label) {
+    flex: 1;
+    text-align: left;
+    padding: 0 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+
+  > .#{$namespace}-radio {
+    margin-right: 0;
+
+    .#{$namespace}-radio__label {
+      padding-left: 0;
+    }
+  }
+}
