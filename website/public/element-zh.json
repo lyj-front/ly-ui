@@ -432,168 +432,6 @@
     "category": "component"
   },
   {
-    "component": "beCareful",
-    "title": "微项目开发注意事项",
-    "anchor": "wei-xiang-mu-kai-fa-zhu-yi-shi-xiang",
-    "content": "记录使用乾坤开发微项目时遇到的坑，以及必要的注意事项",
-    "path": "beCareful",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "模板介绍",
-    "anchor": "mo-ban-jie-shao",
-    "content": "模板介绍",
-    "path": "beCareful",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "目录结构",
-    "anchor": "mu-lu-jie-gou",
-    "content": "![目录结构](https://7xln4b.com1.z0.glb.clouddn.com/lxt/project/FpLAoelU-_FQig7s5kv9ScP1YUbt.png)| 文件/文件夹       | 说明                                                                 || ---------- | ------------------------------------------------------------------- || public     | 静态资源（不经过打包）                                             || assets     | 图片/css/其他资源（会经过打包）                                     || components     | 页面组件（LeYouJia目录下的组件会自动全局导入）                   || icons     | 微项目图标库，配置 lyj-icon 组件使用    || operation     | 存放乾坤微项目启动代码    || operation/plugIn.js     | 插件注册    || router     | 路由文件    || server     | 存放接口    || store     | 存放全局变量，函数等，工厂函数等（并非Vuex）    || unit     | 存放通用方法    || views     | 页面    || .env.development     | 开发环境变量    || .env.production     | 打包之后的环境变量    || vue.config.js     | vue-cli 配置文件    |",
-    "path": "beCareful",
-    "sort": 2,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "operation/plugIn.js 插件注册",
-    "anchor": "operation-plugin-js-cha-jian-zhu-ce",
-    "content": "> 乾坤的微项目不能直接通过 script 引入，所以提供了以下引入外链文件的方式",
-    "path": "beCareful",
-    "sort": 3,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "1、配置 PLUGIN 数组",
-    "anchor": "one-pei-zhi-plugin-shu-zu",
-    "content": "| 参数       | 说明                                                                 | 类型            | 可选值 | 默认值 || ---------- | -------------------------------------------------------------------- | --------------- | ------ | ------ || plugName     | 如果是自己引入的，自己定一个插件名，注意不要重复                       | string | —      | —      || url     | 链接，注意这里需要提供 http/https 链接                       | string | —      | —      || type     | 引入类型                       | number | 1：通过 script 标签引入插件；2：通过 vue.component 注入组件；3：通过 vue.use 方法注入插件；4：通过 vue.directive 方法注入指令；5： 注入一个 function 方法；     | —      || explain     | 简介                       | string | —      | —      |",
-    "path": "beCareful",
-    "sort": 4,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "2、window.middleground API",
-    "anchor": "two-window-middleground-api",
-    "content": "| 名称       | 说明                                                                 | 参数 || ---------- | ------------------------------------------------------------------- | ---------- || middlegroundMap     | 输出所有可用的插件列表                                                  | —      || injectedPlugIn     | 当前项目已注入插件列表                                                  | —      || init     | 注入PLUGIN配置的插件                                                  | 接收两个参数 (PLUGIN, vm)      || postPlugIn     | 导入一个新的插件                                                  | 接收 PLUGIN 中的一个插件对象     || registerPlugIn     | 根据 plugName 注册插件到项目中                                                  | 接收两个参数 (plugName, vm)      |",
-    "path": "beCareful",
-    "sort": 5,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "3、系统预设插件",
-    "anchor": "three-xi-tong-yu-she-cha-jian",
-    "content": "| 插件       | 说明                                                                 || ---------- | ------------------------------------------------------------------- || tag_plugin     | 标签中台插件                                                  || autoComplugins     | 人员插件                                                  |",
-    "path": "beCareful",
-    "sort": 6,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "window 问题",
-    "anchor": "window-wen-ti",
-    "content": "开发微项目的过程中使用 window 需要特别注意，由于乾坤的机制，页面实际有两个 window，一个是当前微项目的 window，另一个是主项目的 window；我们在浏览器的控制台中打印出来的 window 是主项目的。而在代码中 console.log 输出的 window 是当前项目的；如果要使用主项目的 window，可以使用 window.menuWindow 获取。",
-    "path": "beCareful",
-    "sort": 7,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "页面跳转问题",
-    "anchor": "ye-mian-tiao-zhuan-wen-ti",
-    "content": "不能直接使用 vue-router 的 router.push() 进行页面跳转；应该使用 router.qkGo() ；该方法接收参数与 router.push 一致",
-    "path": "beCareful",
-    "sort": 8,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "router 配置",
-    "anchor": "router-pei-zhi",
-    "content": "在使用 router 配置的时候应该注意以下问题1、需要配置 meta.title 属性，提供给页面标签的标题使用2、如果有面包屑的需求，则需要配置一下 meta.breadcrumb 属性，配合  组件使用meta.breadcrumb 参数说明title| 参数       | 说明                                                                 || ---------- | ------------------------------------------------------------------- || name     | 面包屑跳转页面的name                                                  || title    | 面包屑使用文本                                                  |",
-    "path": "beCareful",
-    "sort": 9,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "server 接口调用",
-    "anchor": "server-jie-kou-diao-yong",
-    "content": "在 server 目录下新建 xxxServer.js，接口可以按照模块区分文件示例 xxxServer.js> 这里是为了演示，并非实际接口，所以基本用了同一个接口名称示例 调用接口",
-    "path": "beCareful",
-    "sort": 10,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "装饰器说明",
-    "anchor": "zhuang-shi-qi-shuo-ming",
-    "content": "| 装饰器       | 说明                                                                 || ---------- | ------------------------------------------------------------------- || get     | get 方法，使用标准的 query 传参                                                  || post    | post 方法，用标准的 JSON 格式                                                  || postQuery    | post方法，用 JSON 格式，但是服务器是通过 query 接收参数的情况                                                || postFormQuery    | post方法，用 from 格式，但是服务器是通过 query 接收参数的情况                                            || postFormData    | post方法，用 from 格式，但是服务器接收参数，并非标准的from格式，也并非query的情况，可以尝试使用这个          |",
-    "path": "beCareful",
-    "sort": 11,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "view 页面开发说明",
-    "anchor": "view-ye-mian-kai-fa-shuo-ming",
-    "content": "1. 页面使用 script setup 方式开发，写法从vue官方文档中查阅 [VUE官方文档地址](https://v3.cn.vuejs.org/api/sfc-script-setup.html",
-    "path": "beCareful",
-    "sort": 12,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "微项目配置页",
-    "anchor": "wei-xiang-mu-pei-zhi-ye",
-    "content": "如果遇到需要修改已经创建好的url链接的情况，可以在微项目配置页进行修改点击可以进去查看，也可以自己输入链接进去，域名/lyj-menu/config[开发环境](http://dev.leyoujia.com/lyj-menu/config)[测试环境](http://itest.leyoujia.com/lyj-menu/config)[3.100](http://172.16.3.100/lyj-menu/config)[正式环境](http://i.leyoujia.com/lyj-menu/config)> 此处要注意，不管是线上线下，尽量保持环境整洁，不要配置无用的项目进去，新增上去的无效项目，自己删除> 使用 lyj-cli 通过脚手架创建项目，会自动在 3.100 与 itest 环境配置好对应项目，如果是通过脚手架创建了无效的项目，记得前往这两个环境删除掉无效的项目",
-    "path": "beCareful",
-    "sort": 13,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "同一个项目配置多个菜单入口",
-    "anchor": "tong-yi-ge-xiang-mu-pei-zhi-duo-ge-cai-dan-ru-kou",
-    "content": "之前通过脚手架，我们得到的二级菜单链接为：但是这种方式只能支持到二级菜单，想要在一个项目里配置出多个三级菜单，可以前往 [itest 菜单配置页](http://itest.leyoujia.com/jjslogin/menuConfig/topic_list)、[3.100 菜单配置页](http://172.16.3.100/jjslogin/menuConfig/topic_list)配置菜单，然后使用参数的方式去识别 url> 三级菜单依旧绕不开二级菜单，所以依旧要要配置>> 重点注意，二级菜单地址不能配置为空！！不能配置为空！！不能配置为空！！否则老的头部点击二级菜单会直接跳转到登录页面。>> 建议使用第一个三级菜单的地址三级菜单 url 规则:",
-    "path": "beCareful",
-    "sort": 14,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "修改导航菜单icon",
-    "anchor": "xiu-gai-dao-hang-cai-dan-icon",
-    "content": "> 目前修改导航菜单的icon十分麻烦，需要到主项目中修改>> 后期会在菜单配置页面上传 icon，待开发中1. 从 gitLab 上拉取 [主项目](http://172.16.3.120/lyj-front/lyj-menu.git)2. 将设置指定的 icon 放置于 src/icons/svg 目录下，修改 icon 的名称于菜单编码一致即可。icon 仅支持 svg 格式 （需要注意正式环境的菜单编码可能会与测试环境不同，这里需要使用正式环境的编码）3. 打包部署4. 上线的时候主项目同样需要发版",
-    "path": "beCareful",
-    "sort": 15,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "隐藏侧边栏",
-    "anchor": "yin-cang-ce-bian-lan",
-    "content": "链接上携带参数 hideSideBar = true 即可隐藏侧边栏例如： https://itest.leyoujia.com/lyj-menu/zxxy/newLxt?submenu=banner&hideSideBar=true",
-    "path": "beCareful",
-    "sort": 16,
-    "category": "guide"
-  },
-  {
-    "component": "beCareful",
-    "title": "子项目独立运行",
-    "anchor": "zi-xiang-mu-du-li-yun-xing",
-    "content": "独立运行项目启动入口文件：src\\operation\\stand-alone.js通过乾坤运行项目启动入口文件：src\\operation\\index.js可以通过直接访问： /lyj-front/projectName 直接访问项目，但是如果项目引入了插件，需要到 stand-alone.js 写一下引用",
-    "path": "beCareful",
-    "sort": 17,
-    "category": "guide"
-  },
-  {
     "component": "border",
     "title": "Border 边框",
     "anchor": "border-bian-kuang",
@@ -1539,177 +1377,6 @@
     "category": "component"
   },
   {
-    "component": "control",
-    "title": "公共人员查询范围组件",
-    "anchor": "gong-gong-ren-yuan-cha-xun-fan-wei-zu-jian",
-    "content": "公共人员查询范围组件",
-    "path": "control",
-    "sort": 0,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "使用背景：",
-    "anchor": "shi-yong-bei-jing",
-    "content": "使用背景：",
-    "path": "control",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "1.公司系统涉及到人员查找的，都会有【人员查询范围】查询条件，使用比较广泛",
-    "anchor": "one-gong-si-xi-tong-she-ji-dao-ren-yuan-cha-zhao-de-du-hui-you-ren-yuan-cha-xun-fan-wei-cha-xun-tiao-jian-shi-yong-bi-jiao-guang-fan",
-    "content": "1.公司系统涉及到人员查找的，都会有【人员查询范围】查询条件，使用比较广泛",
-    "path": "control",
-    "sort": 2,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "2.不同系统【人员查询范围】的值都不一样，但实际上查询结果是一样",
-    "anchor": "two-bu-tong-xi-tong-ren-yuan-cha-xun-fan-wei-de-zhi-du-bu-yi-yang-dan-shi-ji-shang-cha-xun-jie-guo-shi-yi-yang",
-    "content": "2.不同系统【人员查询范围】的值都不一样，但实际上查询结果是一样",
-    "path": "control",
-    "sort": 3,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "3.公司制度的名词解释都没涉及相关解释，需要统一",
-    "anchor": "three-gong-si-zhi-du-de-ming-ci-jie-shi-du-mei-she-ji-xiang-guan-jie-shi-xu-yao-tong-yi",
-    "content": "3.公司制度的名词解释都没涉及相关解释，需要统一",
-    "path": "control",
-    "sort": 4,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "4.用户使用成本较高",
-    "anchor": "four-yong-hu-shi-yong-cheng-ben-jiao-gao",
-    "content": "4.用户使用成本较高",
-    "path": "control",
-    "sort": 5,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "lyControl 下拉数据固定集合",
-    "anchor": "lycontrol-xia-la-shu-ju-gu-ding-ji-he",
-    "content": "lyControl 下拉数据固定集合",
-    "path": "control",
-    "sort": 6,
-    "category": "component"
-  },
-  {
-    "component": "control",
-    "title": "lyControl Events",
-    "anchor": "lycontrol-events",
-    "content": "其他事件同 select| 参数         | 说明           | 回调参数                                                    || ------------ | -------------- | ----------------------------------------------------------- || handleSelect | 选项改变时触发 | value(选择的值) || list | 下拉列表的内容 | 下拉数据固定集合(支持自定义修改，但是不要修改label值) || options | 可以选取list中的值使用 | 默认[1,2,3,4,5,6]包含显示 |",
-    "path": "control",
-    "sort": 7,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "自定义主题",
-    "anchor": "zi-ding-yi-zhu-ti",
-    "content": "Element Plus 默认提供一套主题，CSS 命名采用 BEM 的风格，方便使用者覆盖样式。我们提供了四种方法，可以进行不同程度的样式自定义。",
-    "path": "custom-theme",
-    "sort": 0,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "仅替换主题色",
-    "anchor": "jin-ti-huan-zhu-ti-se",
-    "content": "如果仅希望更换 Element Plus 的主题色，推荐使用[在线主题生成工具](https://element-plus.github.io/theme-chalk-preview)。Element Plus 默认的主题色是鲜艳、友好的蓝色。通过替换主题色，能够让 Element Plus 的视觉更加符合具体项目的定位。使用上述工具，可以很方便地实时预览主题色改变之后的视觉，同时它还可以基于新的主题色生成完整的样式文件包，供直接下载使用（关于如何使用下载的主题包，请参考本节「引入自定义主题」和「搭配插件按需引入组件主题」部分）。",
-    "path": "custom-theme",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "在项目中改变 SCSS 变量",
-    "anchor": "zai-xiang-mu-zhong-gai-bian-scss-bian-liang",
-    "content": "Element Plus 的 theme-chalk 使用 SCSS 编写，如果你的项目也使用了 SCSS，那么可以直接在项目中改变 Element Plus 的样式变量。新建一个样式文件，例如 `element-variables.scss`，写入以下内容：之后，在项目的入口文件中，直接引入以上样式文件即可（无需引入 Element Plus 编译好的 CSS 文件）：",
-    "path": "custom-theme",
-    "sort": 2,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "命令行主题工具",
-    "anchor": "ming-ling-xing-zhu-ti-gong-ju",
-    "content": "如果你的项目没有使用 SCSS，那么可以使用命令行主题工具进行深层次的主题定制：",
-    "path": "custom-theme",
-    "sort": 3,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**安装工具**",
-    "anchor": "an-zhuang-gong-ju",
-    "content": "首先安装「主题生成工具」，可以全局安装或者安装在当前项目下，推荐安装在项目里，方便别人 clone 项目时能直接安装依赖并启动，这里以全局安装做演示。安装白垩主题，可以从 npm 安装或者从 GitHub 拉取最新代码。",
-    "path": "custom-theme",
-    "sort": 4,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**初始化变量文件**",
-    "anchor": "chu-shi-hua-bian-liang-wen-jian",
-    "content": "主题生成工具安装成功后，如果全局安装可以在命令行里通过 `et` 调用工具，如果安装在当前目录下，需要通过 `node_modules/.bin/et` 访问到命令。执行 `-i` 初始化变量文件。默认输出到 `element-variables.scss`，当然你可以传参数指定文件输出目录。如果使用默认配置，执行后当前目录会有一个 `element-variables.scss` 文件。内部包含了主题所用到的所有变量，它们使用 SCSS 的格式定义。大致结构如下：",
-    "path": "custom-theme",
-    "sort": 5,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**修改变量**",
-    "anchor": "xiu-gai-bian-liang",
-    "content": "直接编辑 `element-variables.scss` 文件，例如修改主题色为红色。",
-    "path": "custom-theme",
-    "sort": 6,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**编译主题**",
-    "anchor": "bian-yi-zhu-ti",
-    "content": "保存文件后，到命令行里执行 `et` 编译主题，如果你想启用 `watch` 模式，实时编译主题，增加 `-w` 参数；如果你在初始化时指定了自定义变量文件，则需要增加 `-c` 参数，并带上你的变量文件名。默认情况下编译的主题目录是放在 `./theme` 下，你可以通过 `-o` 参数指定打包目录。",
-    "path": "custom-theme",
-    "sort": 7,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "使用自定义主题",
-    "anchor": "shi-yong-zi-ding-yi-zhu-ti",
-    "content": "使用自定义主题",
-    "path": "custom-theme",
-    "sort": 8,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**引入自定义主题**",
-    "anchor": "yin-ru-zi-ding-yi-zhu-ti",
-    "content": "和引入默认主题一样，在代码里直接引用「在线主题编辑器」或「命令行工具」生成的主题的 `theme/index.css` 文件即可。",
-    "path": "custom-theme",
-    "sort": 9,
-    "category": "component"
-  },
-  {
-    "component": "custom-theme",
-    "title": "**搭配插件按需引入组件主题**",
-    "anchor": "da-pei-cha-jian-an-xu-yin-ru-zu-jian-zhu-ti",
-    "content": "如果是搭配 `babel-plugin-component` 一起使用，只需要修改 `.babelrc` 的配置，指定 `styleLibraryName` 路径为自定义主题相对于 `.babelrc` 的路径，注意要加 `~`。如果不清楚 `babel-plugin-component` 是什么，请阅读 <a href=\"./",
-    "path": "custom-theme",
-    "sort": 10,
-    "category": "component"
-  },
-  {
     "component": "date-picker",
     "title": "DatePicker 日期选择器",
     "anchor": "datepicker-ri-qi-xuan-ze-qi",
@@ -1890,33 +1557,6 @@
     "category": "component"
   },
   {
-    "component": "deploy",
-    "title": "微项目部署及上线流程",
-    "anchor": "wei-xiang-mu-bu-shu-ji-shang-xian-liu-cheng",
-    "content": "目前自动化部署流程还在计划建设中...所以部署均需要手动打包构建项目",
-    "path": "deploy",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "deploy",
-    "title": "测试环境部署",
-    "anchor": "ce-shi-huan-jing-bu-shu",
-    "content": "以新项目为例运行命令执行一下打包将打包生成的 dist目录 提交到 gitLab；前端人员告知项目相关测试同事：要部署一下前端的项目，git地址、要部署哪个分支、项目名称；测试同事需要在 Jenkins 中新建项目（前端项目的类型，测试同事一般都知道怎么建，如果不清楚，让测试同事询问上级）；测试同事需要在对应的服务器中新建文件夹；通过 Jenkins 部署成功！> PS：特别注意！！！提醒测试同事，Jenkins 中新建的项目名称，需要与我们前端项目的项目名称 + gitLab项目名称 保持一致（不一致可能会导致部署正式环境失败）通过 itest 环境访问项目链接进行自测 （冒烟）项目转测",
-    "path": "deploy",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "deploy",
-    "title": "正式环境部署",
-    "anchor": "zheng-shi-huan-jing-bu-shu",
-    "content": "找测试同事获取 scp 的链接（如果测试同事不清楚，让询问上级了解）将 scp 链接发送给运维同事，同理新项目，项目名也需要发送（运维同事需要根据项目名，在正式的服务器新建对应目录）等待运维同事部署完毕...联系相关人员配置正式环境菜单（一般是产品，把访问链接、新项目的菜单编码发给产品），正式环境的菜单编码需要与测试环境保持一致；编码不一致的情况下，需要调整页面访问链接，总之就是需要满足 URL 匹配规则拿到正式环境链接之后，前往[正式环境的微项目配置页](http://i.leyoujia.com/lyj-menu/config)，点击新增子项目按钮，输入配置信息正式环境访问项目链接，检查是否部署成功！",
-    "path": "deploy",
-    "sort": 2,
-    "category": "guide"
-  },
-  {
     "component": "descriptions",
     "title": "Descriptions 描述列表",
     "anchor": "descriptions-miao-shu-lie-biao",
@@ -1996,60 +1636,6 @@
     "path": "descriptions",
     "sort": 8,
     "category": "component"
-  },
-  {
-    "component": "design",
-    "title": "新建微项目完整流程",
-    "anchor": "xin-jian-wei-xiang-mu-wan-zheng-liu-cheng",
-    "content": "介绍新系统新建微项目的完整流程，请从上往下走完全流程。",
-    "path": "design",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "design",
-    "title": "菜单配置",
-    "anchor": "cai-dan-pei-zhi",
-    "content": "1、前往 [itest 菜单配置页](http://itest.leyoujia.com/jjslogin/menuConfig/topic_list)、[3.100 菜单配置页](http://172.16.3.100/jjslogin/menuConfig/topic_list)配置菜单（新项目具体配置在哪个一级菜单下，可询问相关负责人，一般为产品经理）；2、复制即将要配置的一级菜单编码；3、点击 子菜单 按钮进入二级菜单，点击新增按钮创建菜单；![新增菜单](https://7xln4b.com1.z0.glb.clouddn.com/lxt/project/Fk2BIujZc97AvycOjNQoVqAtTlO0.png)>  地址组成分析： /lyj-menu/一级菜单编码/二级菜单编号。",
-    "path": "design",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "design",
-    "title": "创建 gitLab 仓库",
-    "anchor": "chuang-jian-gitlab-cang-ku",
-    "content": "1、前往 [gitLab](http://172.16.3.120/) 新建一个仓库；> PS：特别注意！！！仓库名称需要与项目名称保持一致![新建仓库示例](https://7xln4b.com1.z0.glb.clouddn.com/lxt/project/FkAv1ch7GVtx29S-CWM77z3vxFTZ.png)2、把项目拉取到本地；",
-    "path": "design",
-    "sort": 2,
-    "category": "guide"
-  },
-  {
-    "component": "design",
-    "title": "新建项目",
-    "anchor": "xin-jian-xiang-mu",
-    "content": "1、npm 先连接到私服镜像，如果之前已经改过镜像，那么不需要再次修改（不需要使用淘宝镜像，私服已经提供了淘宝镜像的功能）；2、安装脚手架 [lyj-cli](http://172.16.3.201:4873/-/web/detail/lyj-cli)；3、打开 cmd（命令行） 定位到刚刚从gitLab上拉取到本地的文件夹中，执行以下命令（ project-name为要新建的项目名 ）；4、按要求输入两个值：a. 项目中文名b. 主项目访问链接（第一步通过菜单创建的链接）",
-    "path": "design",
-    "sort": 3,
-    "category": "guide"
-  },
-  {
-    "component": "design",
-    "title": "配置本地 host (目前只支持直接使用IP地址访问，所以可以去掉这个部分了)",
-    "anchor": "pei-zhi-ben-di-host-mu-qian-zhi-zhi-chi-zhi-jie-shi-yong-ipdi-zhi-fang-wen-suo-yi-ke-yi-qu-diao-zhe-ge-bu-fen-liao",
-    "content": "前往 C:\\Windows\\System32\\drivers\\etc，找到 host 文件最后添加：127.0.0.1 dev.leyoujia.com  （一个电脑只需要配置一次）",
-    "path": "design",
-    "sort": 4,
-    "category": "guide"
-  },
-  {
-    "component": "design",
-    "title": "启动项目",
-    "anchor": "qi-dong-xiang-mu",
-    "content": "1、安装项目依赖2、启动本地服务3、配置 Ngnix 服务，并启动>  ng 的作用有两个： a. 转发 itest 的登录服务； b. 转发 itest 主项目；nginx.conf 示例（如果遇到无法启动的情况，可能是从这里复制出来的携带有特殊符号，请联系前端负责人拿一份配置文件）：4、通过乾坤头部访问开发环境http://172.16.X.XXX/lyj-menu/一级菜单编码/二级菜单编号",
-    "path": "design",
-    "sort": 5,
-    "category": "guide"
   },
   {
     "component": "dialog",
@@ -2349,60 +1935,6 @@
     "category": "component"
   },
   {
-    "component": "emp-search",
-    "title": "公共人员、部门、岗位、职位关键词搜索",
-    "anchor": "gong-gong-ren-yuan-bu-men-gang-wei-zhi-wei-guan-jian-ci-sou-suo",
-    "content": "搜索人员、部门、职位、岗位（默认接口），同时支持自定义接口请求数据或自定义数据",
-    "path": "emp-search",
-    "sort": 0,
-    "category": "component"
-  },
-  {
-    "component": "emp-search",
-    "title": "1、人员、门店、职位、岗位搜索",
-    "anchor": "one-ren-yuan-men-dian-zhi-wei-gang-wei-sou-suo",
-    "content": "1、人员、门店、职位、岗位搜索",
-    "path": "emp-search",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "emp-search",
-    "title": "2、自定义搜索",
-    "anchor": "two-zi-ding-yi-sou-suo",
-    "content": "2、自定义搜索",
-    "path": "emp-search",
-    "sort": 2,
-    "category": "component"
-  },
-  {
-    "component": "emp-search",
-    "title": "empSearch Attributes",
-    "anchor": "empsearch-attributes",
-    "content": "其他属性同 select| 参数        | 说明                                                  | 类型                   | 可选值                                                        | 默认值    || ----------- | ----------------------------------------------------- | ---------------------- | ------------------------------------------------------------- | --------- || options     | 下拉列表，在有 value 时必填                           | [] {label:'',value:''} | —                                                             | —         || debounce    | 搜索频率间隔时间                                      | Number                 | -                                                             | 300ms     || apiKey      | 接口标识                                              | String                 | emp(人员搜索)、dept(岗位搜索)、duty(职位搜索)、post(岗位搜索) | emp       || valueKey    | 作为 value 唯一标识的键名                             | String                 | —                                                             | workerId  || labelKey    | 选中输入框中的值的 label，详见自定义展示字段          | String                 | —                                                             | label     || description | 文本描述                                              | string                 | —                                                             | —         || isLeave     | 是否可以查询离职人员（注：知道 apiKey 为 emp 时有效） | Boolean                | true/false                                                    | true      || powerUrl    | 人员和部门、门店搜索范围的权限地址 （默认查询所有）   | String                 | —                                                             | searchAll || showStatus   | 是否将失效部门标红   | Boolean                 | —                                                             | false || request   | 调用获取数据时接口需要额外的参数   | Object                 | 无                                                             | {} |",
-    "path": "emp-search",
-    "sort": 3,
-    "category": "component"
-  },
-  {
-    "component": "emp-search",
-    "title": "Slot",
-    "anchor": "slot",
-    "content": "| name      | 说明                                                                                                                                                                                                                                                                               || --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- || option    | 自定义展示数据                                                                                                                                                                                                                                                                     |     || seletSolt | 选中数据展示 ，data 参数 type:'tooltipTags'(气泡提示区域) type:'unExpandTags'(不展开选中项时，选中的展示区域) type:'expandTags'(展开选中项时，选中的展示区域) type:'outInput'(下方展示选中项时，选中的展示区域),item:{currentLabel:'',value:''}选中的 option 包含 label 和 value } |     |",
-    "path": "emp-search",
-    "sort": 4,
-    "category": "component"
-  },
-  {
-    "component": "emp-search",
-    "title": "empSearch Events",
-    "anchor": "empsearch-events",
-    "content": "其他事件同 select| 参数         | 说明           | 回调参数                                                    || ------------ | -------------- | ----------------------------------------------------------- || handleSelect | 选项改变时触发 | value(选择的值--value 组数)、allValue(选中的值--源数据数组) || extensionApi | 扩展搜索请求   | function(cb) cb 传参为列表数据                              |",
-    "path": "emp-search",
-    "sort": 5,
-    "category": "component"
-  },
-  {
     "component": "empty",
     "title": "类型",
     "anchor": "lei-xing",
@@ -2473,6 +2005,96 @@
     "path": "empty",
     "sort": 7,
     "category": "component"
+  },
+  {
+    "component": "evaluate",
+    "title": "备注",
+    "anchor": "bei-zhu",
+    "content": "评价组件用于在页面中显示评价弹窗，支持满意度等级选择、标签选择、文本评论等功能。组件会自动调用接口获取评价配置，并支持提交评价数据。",
+    "path": "evaluate",
+    "sort": 0,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "使用方法",
+    "anchor": "shi-yong-fang-fa",
+    "content": "> 1.引入方式在HTML页面中引入evaluate.js文件：> 2.基础用法> 3.使用构造函数方式> 4.控制弹窗显示和隐藏> 5.手动控制显示（使用 autoShow: false）> 6.完整示例> 7.自定义标题、问题和占位符示例> 8.不锁定页面滚动示例",
+    "path": "evaluate",
+    "sort": 1,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "可配置参数",
+    "anchor": "ke-pei-zhi-can-shu",
+    "content": "| 参数                  | 说明                                           | 类型     | 必填 | 可选值                                                                                          | 默认值   || --------------------- | ---------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------------------------------- | -------- || config                | 配置参数对象                                   | Object   | 是   | 下方详细描述                                                                                    | 无       || callBack              | 表单提交后的回调函数                           | Function | 否   | 函数，参数为{level, tags, comment, evaluateId, config}                                        | 无       || options               | 可选参数对象                                   | Object   | 否   | 下方详细描述                                                                                    | {}       |",
+    "path": "evaluate",
+    "sort": 2,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "config参数",
+    "anchor": "configcan-shu",
+    "content": "| 参数名              | 说明                                    | 类型   | 必填 | 说明                                                       || ------------------- | --------------------------------------- | ------ | ---- | ---------------------------------------------------------- || source              | 来源                                    | Number | 是   | 1：签约评价 2：交房评价 3：按揭评价 4：过户评价 5：带看评价 6：租房评价 7：房源推广 || businessId          | 业务ID                                  | String | 是   | 业务标识ID                                                 || businessUrl         | 业务跳转链接                            | String | 否   | 业务详情页链接                                             || businessCode        | 业务编号                                | String | 否   | 业务编号                                                   || peopleType          | 被评价人员类型                          | Number | 是   | 1：员工，2：客户                                           || workerId            | 被评价人ID                              | String | 否   | 被评价人的唯一标识                                         || workerName          | 被评价人姓名                            | String | 否   | 被评价人姓名，会显示在问题文本中                           || evaluatedPersonQh   | 被评价人手机区号                        | String | 否   | 如：+86                                                    || evaluatedPersonPhone| 被评价人手机号码                        | String | 否   | 手机号码                                                   || peopleType1         | 评价人员类型                            | Number | 是   | 1：业主，2：客户                                           || peopleId            | 评价人id                                | String | 否   | 评价人的唯一标识（客户id）                                 || peopleName          | 评价人姓名                              | String | 否   | 评价人姓名（客户名称）                                     || telQh               | 评价人手机区号                          | String | 否   | 如：+86                                                    || phone               | 评价人手机号                            | String | 否   | 手机号码                                                   || sceneCode           | 场景编号                                | String | 是   | 场景唯一标识                                               |",
+    "path": "evaluate",
+    "sort": 3,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "options参数",
+    "anchor": "optionscan-shu",
+    "content": "| 参数名         | 说明                                                           | 类型    | 必填 | 可选值      | 默认值                     || -------------- | -------------------------------------------------------------- | ------- | ---- | ----------- | -------------------------- || level          | 默认选中的满意度等级                                           | Number  | 否   | 1, 2, 3, 4, 5 | 无                         || autoShow       | 是否默认打开评价弹框                                           | Boolean | 否   | true, false | true                       || lockBodyScroll | 弹框弹出时是否锁定页面滚动（设置html overflow: hidden）        | Boolean | 否   | true, false | true                       || title          | 弹框标题                                                       | String  | 否   | -           | \"评价\"                     || question       | 评价问题文本，支持{workerName}占位符，会被替换为被评价人姓名或\"该服务\" | String  | 否   | -           | \"您对{workerName}的服务满意吗?\" || placeholder    | 评论输入框的占位符文本                                         | String  | 否   | -           | \"用心好评会传达给经纪人\"   |",
+    "path": "evaluate",
+    "sort": 4,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "满意度等级",
+    "anchor": "man-yi-du-deng-ji",
+    "content": "组件支持5个满意度等级，每个等级对应不同的表情和文本：| 等级 | 文本   | 值 || ---- | ------ | -- || 1星  | 非常差 | 1  || 2星  | 差     | 2  || 3星  | 一般   | 3  || 4星  | 很好   | 4  || 5星  | 非常好 | 5  |注：满意度等级的文本和标签列表由接口返回的配置决定，以上为默认值。",
+    "path": "evaluate",
+    "sort": 5,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "实例方法",
+    "anchor": "shi-li-fang-fa",
+    "content": "| 方法名  | 说明                 | 参数 | 返回值 || ------- | -------------------- | ---- | ------ || show()  | 显示评价弹窗         | 无   | void   || hide()  | 隐藏评价弹窗         | 无   | void   || destroy() | 销毁组件，从DOM中移除 | 无   | void   |",
+    "path": "evaluate",
+    "sort": 6,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "回调函数",
+    "anchor": "hui-diao-han-shu",
+    "content": "| 参数名     | 说明                     | 类型   | 说明                                                         || ---------- | ------------------------ | ------ | ------------------------------------------------------------ || result     | 评价结果对象             | Object | 包含评价提交后的所有数据                                     || result.level | 满意度等级             | Number | 1-5的数字，表示用户选择的满意度等级                          || result.tags | 选中的标签数组         | Array  | 用户选中的标签文本数组                                       || result.comment | 评论内容             | String | 用户输入的文本评论                                           || result.evaluateId | 评价ID             | String | 接口返回的评价记录ID                                         || result.config | 配置对象           | Object | 创建组件时传入的config配置对象                               |",
+    "path": "evaluate",
+    "sort": 7,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "接口说明",
+    "anchor": "jie-kou-shuo-ming",
+    "content": "组件会自动调用以下接口：**1. 获取评价配置接口**- **接口地址**: `/epapi/epController/saveEpService`- **请求方式**: POST- **请求参数**: config对象中的参数- **返回数据**: 包含评价ID、满意度等级配置、标签列表等**2. 提交评价接口**- **接口地址**: `/epapi/epController/saveSimpleEvaluate`- **请求方式**: POST- **请求参数**:   - id: 评价ID  - evaluateRemark: 评论内容  - pjFlag: 是否匿名（false表示匿名）  - typeForms: 评价表单数组，包含满意度等级和标签",
+    "path": "evaluate",
+    "sort": 8,
+    "category": "other"
+  },
+  {
+    "component": "evaluate",
+    "title": "注意事项",
+    "anchor": "zhu-yi-shi-xiang",
+    "content": "1. 组件需要传入完整的配置参数（source、businessId、peopleType、peopleType1、sceneCode）才能正常调用接口获取评价配置2. 如果配置参数不完整，组件仍会显示，但不会调用接口获取配置，使用默认配置3. 组件默认在创建时自动显示弹窗（autoShow默认为true），如果设置`autoShow: false`则不会自动显示，需要手动调用`show()`方法显示弹窗4. 组件会自动插入样式到页面head中，多次创建实例时样式只会插入一次5. 组件支持匿名评价，评价数据会通过接口提交到服务器6. 评价提交成功后，弹窗会自动关闭7. 如果传入了callBack回调函数，提交成功后会调用该函数；否则会触发自定义事件'evaluateSubmit'到document.body",
+    "path": "evaluate",
+    "sort": 9,
+    "category": "other"
   },
   {
     "component": "form",
@@ -2616,69 +2238,6 @@
     "content": "| 方法名        | 说明                                                 | 参数 || ------------- | ---------------------------------------------------- | ---- || resetField    | 对该表单项进行重置，将其值重置为初始值并移除校验结果 | —    || clearValidate | 移除该表单项的校验结果                               | —    |",
     "path": "form",
     "sort": 15,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "Framework 组织架构组件",
-    "anchor": "framework-zu-zhi-jia-gou-zu-jian",
-    "content": "架构树组件",
-    "path": "framework",
-    "sort": 0,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "使用方法",
-    "anchor": "shi-yong-fang-fa",
-    "content": "使用方法",
-    "path": "framework",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "api使用演示",
-    "anchor": "apishi-yong-yan-shi",
-    "content": "api使用演示",
-    "path": "framework",
-    "sort": 2,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "Framework Attributes",
-    "anchor": "framework-attributes",
-    "content": "| 参数                                  | 说明             | 类型    | 是否必传    | 默认值 || ------------------- | ----------------  | ------- | ------ | ------ || framework-key                         | tree组件标识     | string  | true | ly-framework || default-expanded-keys | 设置组件渲染时默认展开的node，不设置默认展开一层     | string  | false | / || loading                               | 是否显示loading  | Boolean | false | false  || framework-data                        | tree的数据       | Array   | true  |  /     || props                                 | 配置选项，具体看下| Object  | false  |  /     || node-key | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一| string  | false | /   || has-checkbox                         | 显示checkbox    | string  | false | /   || has-invalid                           | 显示含无效    | Boolean  | false | false   || has-expand                           | 是否显示展开所有按钮    | Boolean  | false | true   || width                                 | 宽度            | string  | false | 410px   || height                                | 高度            | string  | false | 320px   || default-checked-node-keys            | 绑定接口数据的某一个字段，同步checked的状态  | string  | false | 320px   |",
-    "path": "framework",
-    "sort": 3,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "props",
-    "anchor": "props",
-    "content": "| 参数     | 说明                                                     | 类型                          | 可选值 | 默认值 || -------- | -------------------------------------------------------- | ----------------------------- | ------ | ------ || label    | 指定节点标签为节点对象的某个属性值                       | string, function(data, node)  | —      | —      || children | 指定子树为节点对象的某个属性值                           | string                        | —      | —      || disabled | 指定节点选择框是否禁用为节点对象的某个属性值             | boolean, function(data, node) | —      | —      || isLeaf   | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效 | boolean, function(data, node) | —      | —      |",
-    "path": "framework",
-    "sort": 4,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "Framework Events (tree组件的所有 Events都可以直接使用)",
-    "anchor": "framework-events-treezu-jian-de-suo-you-eventsdu-ke-yi-zhi-jie-shi-yong",
-    "content": "| 方法名              | 说明                                                                                      | 参数                                                                                                                                             || ------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ || invalidChange | 切换含无效时的回调，业务需要通过这个值自行调用接口修改数据源 | Boolean |",
-    "path": "framework",
-    "sort": 5,
-    "category": "component"
-  },
-  {
-    "component": "framework",
-    "title": "Framework ref 方法",
-    "anchor": "framework-ref-fang-fa",
-    "content": "| 方法名              | 说明                                                                                      | 参数                                                                                                                                             || ------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ || expandByKey | 根据传入的key数组展开对应的数据 | Array || locateNode | 根据传入的key定位到node的位置 | string || setChecked | 根据传入的key设置选中状态 | string(key), boolean(选中状态) || setCheckedAll | 设置全部选中 | boolean(选中状态) |",
-    "path": "framework",
-    "sort": 6,
     "category": "component"
   },
   {
@@ -3250,20 +2809,11 @@
   },
   {
     "component": "installation",
-    "title": "当前最新版本",
-    "anchor": "dang-qian-zui-xin-ban-ben",
-    "content": "ly-ui 目前还处于快速开发迭代中：[ly-ui version 1.2.29](http://172.16.3.201:4873/-/web/detail/ly-ui)",
-    "path": "installation",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "installation",
     "title": "通过 npm 或者 yarn 安装",
     "anchor": "tong-guo-npm-huo-zhe-yarn-an-zhuang",
-    "content": "**我们推荐使用包管理器的方式安装**，它能更好地和 [vite](https://vitejs.dev), [webpack](https://webpack.js.org/)打包工具配合使用。使用前，需要先连接到npm 私服",
+    "content": "**我们推荐使用包管理器的方式安装**，它能更好地和 [vite](https://vitejs.dev), [webpack](https://webpack.js.org/)打包工具配合使用。",
     "path": "installation",
-    "sort": 2,
+    "sort": 1,
     "category": "component"
   },
   {
@@ -3272,89 +2822,8 @@
     "anchor": "hello-world",
     "content": "如果是通过 npm / yarn 安装，并希望配合打包工具使用，请阅读下一节：[快速上手](/",
     "path": "installation",
-    "sort": 3,
-    "category": "component"
-  },
-  {
-    "component": "jsError",
-    "title": "A. lyj-cli",
-    "anchor": "a--lyj-cli",
-    "content": "目前通过lyj-cli创建的项目已经默认对接了JS异常监控但是数据并不会保存，需要前往 Apollo 添加项目https://i.leyoujia.com/apollo/config.html",
-    "path": "jsError",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "B. 乾坤子项目（已经创建好的）",
-    "anchor": "b--gan-kun-zi-xiang-mu-yi-jing-chuang-jian-hao-de",
-    "content": "新增下方  ++++++++++++++++++++++++ 包裹的代码",
-    "path": "jsError",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "1、src/operation/index.js",
-    "anchor": "one-src-operation-index-js",
-    "content": "1、src/operation/index.js",
-    "path": "jsError",
     "sort": 2,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "2、src/operation/stand-alone.js",
-    "anchor": "two-src-operation-stand-alone-js",
-    "content": "2、src/operation/stand-alone.js",
-    "path": "jsError",
-    "sort": 3,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "3、前往 Apollo 添加项目（看 A 操作）",
-    "anchor": "three-qian-wang-apollo-tian-jia-xiang-mu-kan-a-cao-zuo",
-    "content": "3、前往 Apollo 添加项目（看 A 操作）",
-    "path": "jsError",
-    "sort": 4,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "C. 其他项目",
-    "anchor": "c--qi-ta-xiang-mu",
-    "content": "C. 其他项目",
-    "path": "jsError",
-    "sort": 5,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "1、引入JS文档",
-    "anchor": "one-yin-ru-jswen-dang",
-    "content": "1、引入JS文档",
-    "path": "jsError",
-    "sort": 6,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "2、初始化控件",
-    "anchor": "two-chu-shi-hua-kong-jian",
-    "content": "无vue项目vue项目",
-    "path": "jsError",
-    "sort": 7,
-    "category": "guide"
-  },
-  {
-    "component": "jsError",
-    "title": "3、前往 Apollo 添加项目（看 A 操作）",
-    "anchor": "three-qian-wang-apollo-tian-jia-xiang-mu-kan-a-cao-zuo",
-    "content": "3、前往 Apollo 添加项目（看 A 操作）",
-    "path": "jsError",
-    "sort": 8,
-    "category": "guide"
+    "category": "component"
   },
   {
     "component": "layout",
@@ -3648,9 +3117,18 @@
     "component": "lyj-datepicker",
     "title": "1.引入方式",
     "anchor": "one-yin-ru-fang-shi",
-    "content": "> 安装npm包> \\public\\index.html 增加script标签引入包![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-02/15/10/FmvmtsS8Wxl8qf2TjiSuLsAkw-xR.png)-----",
+    "content": "> 安装npm包> ",
     "path": "lyj-datepicker",
     "sort": 1,
+    "category": "other"
+  },
+  {
+    "component": "lyj-datepicker",
+    "title": "",
+    "anchor": "",
+    "content": "",
+    "path": "lyj-datepicker",
+    "sort": 2,
     "category": "other"
   },
   {
@@ -3664,11 +3142,29 @@
   },
   {
     "component": "lyj-datepicker",
+    "title": "2.基础用法",
+    "anchor": "two-ji-chu-yong-fa",
+    "content": "2.基础用法",
+    "path": "lyj-datepicker",
+    "sort": 4,
+    "category": "other"
+  },
+  {
+    "component": "lyj-datepicker",
+    "title": "",
+    "anchor": "",
+    "content": "",
+    "path": "lyj-datepicker",
+    "sort": 5,
+    "category": "other"
+  },
+  {
+    "component": "lyj-datepicker",
     "title": "标签使用",
     "anchor": "biao-qian-shi-yong",
     "content": "------",
     "path": "lyj-datepicker",
-    "sort": 4,
+    "sort": 6,
     "category": "other"
   },
   {
@@ -3677,7 +3173,7 @@
     "anchor": "dan-ge-shi-jian-xuan-ze-qi",
     "content": "> id 用来给页面元素加唯一id用，页面上只有一个时间选择器时可以不加",
     "path": "lyj-datepicker",
-    "sort": 5,
+    "sort": 7,
     "category": "other"
   },
   {
@@ -3686,7 +3182,7 @@
     "anchor": "fan-wei-shi-jian-xuan-ze-qi",
     "content": "> startId和endId 用来给页面元素加唯一id用，页面上只有一个范围时间选择器时可以不加> beforeStartClear、beforeEndClear 为非必传参数，返回true则会中止清空操作------",
     "path": "lyj-datepicker",
-    "sort": 6,
+    "sort": 8,
     "category": "other"
   },
   {
@@ -3695,7 +3191,7 @@
     "anchor": "biao-dan-xiao-yan",
     "content": "------",
     "path": "lyj-datepicker",
-    "sort": 7,
+    "sort": 9,
     "category": "other"
   },
   {
@@ -3704,7 +3200,7 @@
     "anchor": "ke-pei-zhi-can-shu",
     "content": "| 参数                  | 说明                                           | 类型                                             | 可选值                                                                                          | 默认值               || --------------------- | ---------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- | -------------------- || type | 时间选择器类型，单个或者范围  | string  | single/range | single       || id | 单个时间选择器的id，必须为当前页面中唯一的值  | string  | — | 'datepickerTime'   || startId | 范围时间选择器开始时间的id，必须为当前页面中唯一的值  | string  | — | 'datePickerStartTime'   || endId | 范围时间选择器结束时间的id，必须为当前页面中唯一的值  | string  | — | 'datePickerEndTime'   ||v-model | 单个选择器组件绑定的值  | string  | — | ''   ||startTime | 范围选择器组件绑定的开始值必须为 v-model:startTime 否则会失去响应式  | string  | — | ''   ||endTime | 范围选择器组件绑定的结束值必须为 v-model:endTime 否则会失去响应式  | string  | — | ''   || disabled | 禁用  | boolean   | —   | false               || width | 时间选择器的宽度  | string/number   | —   | 100               || placeholder           | 非范围选择时的占位内容                         | string                                           | —                                                                                               | —                    || start-placeholder     | 范围选择时开始日期的占位内容                   | string                                           | —                                                                                               | —                    || end-placeholder       | 范围选择时结束日期的占位内容                   | string                                           | —                                                                                               | —                    || range-separator       | 选择范围时的分隔符 | string  | —                                                                                               | '-'                  || format| 日期选择器的类型 | string | 见[自定义格式](http://www.my97.net/demo/resource/2.2.asp",
     "path": "lyj-datepicker",
-    "sort": 8,
+    "sort": 10,
     "category": "other"
   },
   {
@@ -3713,13 +3209,13 @@
     "anchor": "shi-jian",
     "content": "| 事件名称        | 说明                                                  | 回调参数     || --------------- | ----------------------------------------------------- | ------------ || change          | 用户选定的值时触发                                | 组件绑定值   || startChange     | 范围时间选择器用户选定开始时间的值时触发             | 组件绑定值    || endChange       | 范围时间选择器用户选定结束时间的值时触发             | 组件绑定值     |",
     "path": "lyj-datepicker",
-    "sort": 9,
+    "sort": 11,
     "category": "other"
   },
   {
     "component": "lyj-oa",
     "title": "1 .使用方法",
-    "anchor": "one--shi-yong-fang-fa",
+    "anchor": "one-shi-yong-fang-fa",
     "content": "---> html 增加 link 标签引入样式> 特例说明---",
     "path": "lyj-oa",
     "sort": 0,
@@ -3732,42 +3228,6 @@
     "content": "2.试例，（下方案列包含所有引用文件的类名使用，如有与设计图不通或遗漏望补充修改）",
     "path": "lyj-oa",
     "sort": 1,
-    "category": "other"
-  },
-  {
-    "component": "lyj-public-sdk",
-    "title": "使用方法",
-    "anchor": "shi-yong-fang-fa",
-    "content": "-----",
-    "path": "lyj-public-sdk",
-    "sort": 0,
-    "category": "other"
-  },
-  {
-    "component": "lyj-public-sdk",
-    "title": "1.引入方式",
-    "anchor": "one-yin-ru-fang-shi",
-    "content": "> \\operation\\plugIn vue项目增加公共js引入，如下图：![Image text](https://images-tests.leyoujia.com/workflowplatform/follow/2025-06/24/18/FjTJjn9M9GSxxxxrcALPLF95wBAB.png)> jq 需要在项目引入下面的cdn文件-----",
-    "path": "lyj-public-sdk",
-    "sort": 1,
-    "category": "other"
-  },
-  {
-    "component": "lyj-public-sdk",
-    "title": "使用组件",
-    "anchor": "shi-yong-zu-jian",
-    "content": "------",
-    "path": "lyj-public-sdk",
-    "sort": 2,
-    "category": "other"
-  },
-  {
-    "component": "lyj-public-sdk",
-    "title": "可调用方法",
-    "anchor": "ke-diao-yong-fang-fa",
-    "content": "| 方法名       | 说明                     | 类型     | 参数                          | 默认值 || ---------  | ------------------------ | -------- | ----------------------------- | ------ || dateFormat       | 格式化日期       | function | (date, fmt) date为日期参数，fmt为日期格式            | -      || asynCss       | 异步加载css       | function | (url, id) url为css文件路径，id为标识            | -      || asynScript       | 异步加载js       | function | (url, id) url为js文件路径，id为标识            | -      || debounce       | 防抖       | function | (fn, wait) fn为函数，wait为等待时间            | -      || throttle       | 节流       | function | (fn, wait) fn为函数，wait为等待时间            | -      || isApp       | 是否在app端       | function | () 无参数            | -      || getUrlParam       | 获取url参数       | function | (name) name为参数名            | -      || fileDownload       | 文件下载       | function | (fileUrl, fileName) fileUrl为文件路径，fileName为文件名            | -      || getFileType       | 获取文件类型       | function | (fileName) fileName为文件名            | -      || getFileName       | 获取文件名       | function | (fileName) fileName为文件路径            | -      || isEmpty       | 判断多种数据类型是否为空       | function | (data) data为要判断的值            | -      || isEmail       | 验证邮箱       | function | (email) email为邮箱地址            | -      || isMobile       | 验证手机号       | function | (mobile) mobile为手机号            | -      || isIdCard       | 验证身份证       | function | (idCard) idCard为身份证号            | -      || replacePhone       | 只能输入手机号，非手机号替换为空       | function | (value) value为输入值            | -      || replaceNonNumber       | 只能输入数字，非数字替换为空       | function | (value) value为输入值            | -      || replaceNonChineseAndEnglish       | 只能输入中英文，非中英文替换为空       | function | (value) value为输入值            | -      || replacePoint       |只能输入小数，不满足的替换为空       | function | (value, limit) value为输入值, limit为小数位         | -      || getPoster       | 生成截图       | function | (element) element为元素            | -      || request       | 请求       | function | (url, params, callback, header) url为请求地址，params为请求参数，callback为回调函数，header为请求头            | -      || requestBody       | 请求体       | function | (url, params, callback, header, encrypt) url为请求地址，params为请求参数，callback为回调函数，header为请求头，encrypt为是否加密           | -      || minAppHomeReload       | 重新加载app       | function | () 无参数            | -      || loadBarTitle       | 设置标题       | function | (title) title为标题文本            | -      || loadbarColor       | 设置颜色       | function | (color, isDark) color为颜色值，isDark为是否暗色模式            | -      || loadBarTitleColor       | 设置标题颜色       | function | (color) color为颜色值            | -      || setDarkStyle       | 设置暗色       | function | () 无参数            | -      || loadUserInfo       | 获取个人信息，回调函数是setUserInfo       | function | () 无参数            | -      || loadLocation       | 获取位置，回调函数是setLocation       | function | () 无参数            | -      || loadLocalCity       | 获取本地城市       | function | (callback) callback为回调函数            | -      || goCityPage       | 跳转城市页面       | function | (callback) callback为回调函数            | -      || hiddenBack       | 隐藏返回       | function | () 无参数            | -      || webReloadApp       | 重新加载app       | function | (params) params为参数            | -      || webGoBack       | 返回       | function | () 无参数            | -      || newInitWebCacheApp       | 初始化web缓存       | function | (webCache, key) webCache为缓存数据，key为缓存键            | -      || newLoadWebCacheApp       | 加载web缓存       | function | (key, callback) key为缓存键，callback为回调函数            | -      || showTimeSelector       | 显示时间选择器       | function | (type, nowSelectTime, startTime, endTime, callback, toastMsg) 无参数，type：1表示年月日时分，type=2表示年月日，nowSelectTime：当前选中时间，startTime：开始时间，endTime：结束时间，callback： 回调函数，toastMsg：提示信息            | -      || minAppShare       | 分享       | function | (shareType, title, summary, targetUrl, imageUrl, miniPath) shareType为分享类型，title为标题，summary为摘要，targetUrl为目标链接，imageUrl为图片链接，miniPath为小程序路径            | -      || gotoMap       | 跳转地图       | function | (latitude, longitude, address) latitude为纬度，longitude为经度，address为地址            | -      || webtoChat       | 跳转聊天       | function | (workerNo) workerNo为工号            | -      || uploadAttachment       | 选择附件       | function | (type, maxNumber, maxSize, callback) type为文件类型，maxNumber为最大数量，maxSize为最大大小，callback为回调函数            | -      || minAppUpLoadFile       | 上传文件       | function | (file, tokenUrl, fileType, compressType, callback) file为文件，tokenUrl为token地址，fileType为文件类型，compressType为压缩类型，callback为回调函数            | -      || showAlbum       | 查看图片       | function | (params) params为图片预览参数            | -      || toOtherMiniApp       | 跳转其他小程序       | function | (minAppId, minAppPage) minAppId为小程序id, minAppPage为小程序页面路径           | -      || toMoviePlayer       | 跳转视频播放器       | function | (url) url为视频地址            | -      || openLwdview       | 打开乐文档       | function | (url) url为文档地址            | -      || miniAppRecord       | 录音上传       | function | (type, identifier, maxDurationMillis, callback) type为录音类型，identifier为标识符，maxDurationMillis为最大时长，callback为回调函数            | -      || webAppSMG       | 发短信       | function | (telNo, content) telNo为电话号码，content为短信内容            | -      |",
-    "path": "lyj-public-sdk",
-    "sort": 3,
     "category": "other"
   },
   {
@@ -4122,15 +3582,6 @@
     "category": "component"
   },
   {
-    "component": "mini-nav",
-    "title": "使用方法",
-    "anchor": "shi-yong-fang-fa",
-    "content": "扫码体验  用者自取![体验版二维码](https://front.leyoujia.com/fangMini/images/mini-component-sacn.png) [组件地址](http://172.16.3.120/front-end/mini-components.git)(由于md文件不能解析wxml，所以这里给一个地址)",
-    "path": "mini-nav",
-    "sort": 0,
-    "category": "miniprogram"
-  },
-  {
     "component": "notification",
     "title": "Notification 通知",
     "anchor": "notification-tong-zhi",
@@ -4228,51 +3679,6 @@
     "path": "notification",
     "sort": 10,
     "category": "component"
-  },
-  {
-    "component": "nuxt",
-    "title": "NUXT",
-    "anchor": "nuxt",
-    "content": "---Nuxt 目前采用的是vue2.x的语法，nuxt中不需要配置vue-router，page下的文件结构即是路由；目前项目模板适配了移动端，引入了font-size js 和 vant> * [Vant文档地址](https://vant-contrib.gitee.io/vant/",
-    "path": "nuxt",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "nuxt",
-    "title": "项目目录",
-    "anchor": "xiang-mu-mu-lu",
-    "content": "![目录结构](https://front.leyoujia.com/wap-nuxt/nuxt-com-ck.png)",
-    "path": "nuxt",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "nuxt",
-    "title": "目录说明",
-    "anchor": "mu-lu-shuo-ming",
-    "content": "| 目录名称   |  说明  || --------   | -----  || .nuxt   | 项目运行的资源文件 || assets   | 公共图片css资源存放路径 || layout   | 基础路由入口  || middleware   | 项目页面路由架构（运行生成的router是根据这个文件夹下面的目录接口来生成路由规则的）  || pages   | 中间件  || plugins   | 插件 需要在nuxt.config.js 中引用  || static   | 静态资源文件  || store   | vuex状态管理器  || uitls   | 工具类  || .babelr   | babel配置文件  || .browserslistrc   | 浏览器兼容配置  || .editorconfig   | 代码风格配置文件  || .eslintrc   | eslint配置文件  || .eslintrc   | eslint配置文件  || nuxt.config.js | nuxt配置文件 || pm2.config.js | pm2进程守护的配置文件（使用pm2 reload pm2.config.js 启动项目） |",
-    "path": "nuxt",
-    "sort": 2,
-    "category": "guide"
-  },
-  {
-    "component": "nuxt",
-    "title": "运行",
-    "anchor": "yun-xing",
-    "content": "1、本地开发启动2、线上启动启动成功之后 pm2 list 可以查看项目是否启动成功",
-    "path": "nuxt",
-    "sort": 3,
-    "category": "guide"
-  },
-  {
-    "component": "nuxt",
-    "title": "服务器环境安装",
-    "anchor": "fu-wu-qi-huan-jing-an-zhuang",
-    "content": "前提是你需要一台服务器 连接工具[Xshell下载地址](https://www.netsarang.com/zh/xshell-download/)1、安装node（[node版本列表](https://nodejs.org/dist))2、安装pm2 ([pm2文档](https://pm2.keymetrics.io/docs/usage/quick-start/))2、配置nginx",
-    "path": "nuxt",
-    "sort": 4,
-    "category": "guide"
   },
   {
     "component": "page-header",
@@ -4818,7 +4224,7 @@
     "component": "quickstart",
     "title": "使用 lyj-cli@1.3",
     "anchor": "shi-yong-lyj-cli-one-three",
-    "content": "我们为新版的 lyj-cli 准备了相应的[Ly Ui 插件](http://172.16.3.201:4873/-/web/detail/lyj-cli)你可以用它们快速地搭建一个基于Ly Ui 的项目。",
+    "content": "我们为新版的 lyj-cli 准备了相应的[Ly Ui 插件]你可以用它们快速地搭建一个基于Ly Ui 的项目。",
     "path": "quickstart",
     "sort": 5,
     "category": "component"
@@ -5226,33 +4632,6 @@
     "content": "| 方法名        | 说明                   | 参数                 || ------------- | ---------------------- | -------------------- || setScrollTop  | 设置滚动条到顶部的距离 | (scrollTop: number)  || setScrollLeft | 设置滚动条到左边的距离 | (scrollLeft: number) || update        | 手动更新滚动条状态     | —                    |",
     "path": "scrollbar",
     "sort": 7,
-    "category": "component"
-  },
-  {
-    "component": "select-user-grouping",
-    "title": "Select-user-grouping 选择人员分组组件",
-    "anchor": "select-user-grouping-xuan-ze-ren-yuan-fen-zu-zu-jian",
-    "content": "选择人员分组",
-    "path": "select-user-grouping",
-    "sort": 0,
-    "category": "component"
-  },
-  {
-    "component": "select-user-grouping",
-    "title": "基础用法",
-    "anchor": "ji-chu-yong-fa",
-    "content": "适用广泛的基础单选",
-    "path": "select-user-grouping",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "select-user-grouping",
-    "title": "去掉离职人员",
-    "anchor": "qu-diao-chi-zhi-ren-yuan",
-    "content": "适用广泛的基础单选",
-    "path": "select-user-grouping",
-    "sort": 2,
     "category": "component"
   },
   {
@@ -7039,20 +6418,11 @@
   },
   {
     "component": "upload",
-    "title": "腾讯云上传(需版本1.5.1及以上)",
-    "anchor": "teng-xun-yun-shang-chuan-xu-ban-ben-one-five-oneji-yi-shang",
-    "content": "腾讯云上传(需版本1.5.1及以上)",
-    "path": "upload",
-    "sort": 1,
-    "category": "component"
-  },
-  {
-    "component": "upload",
     "title": "照片墙",
     "anchor": "zhao-pian-qiang",
     "content": "使用 `list-type` 属性来设置文件列表的样式。",
     "path": "upload",
-    "sort": 2,
+    "sort": 1,
     "category": "component"
   },
   {
@@ -7061,7 +6431,7 @@
     "anchor": "biao-ge-wen-jian-lie-biao",
     "content": "通过 `list-type` 和`tableHeader`设置为对列表进行控制，此处的`tableHeader`字段参数配置见[tablepage-表头参数](/lyj-front/ly-ui/",
     "path": "upload",
-    "sort": 3,
+    "sort": 2,
     "category": "component"
   },
   {
@@ -7070,7 +6440,7 @@
     "anchor": "dian-ji-shang-chuan",
     "content": "点击上传",
     "path": "upload",
-    "sort": 4,
+    "sort": 3,
     "category": "component"
   },
   {
@@ -7079,7 +6449,7 @@
     "anchor": "yong-hu-tou-xiang-shang-chuan",
     "content": "使用 `before-upload` 限制用户上传的图片格式和大小。",
     "path": "upload",
-    "sort": 5,
+    "sort": 4,
     "category": "component"
   },
   {
@@ -7088,7 +6458,7 @@
     "anchor": "wen-jian-suo-lue-tu",
     "content": "使用 `scoped-slot` 去设置缩略图模版。",
     "path": "upload",
-    "sort": 6,
+    "sort": 5,
     "category": "component"
   },
   {
@@ -7097,7 +6467,7 @@
     "anchor": "tu-pian-lie-biao-suo-lue-tu",
     "content": "图片列表缩略图",
     "path": "upload",
-    "sort": 7,
+    "sort": 6,
     "category": "component"
   },
   {
@@ -7106,7 +6476,7 @@
     "anchor": "shang-chuan-wen-jian-lie-biao-kong-zhi",
     "content": "通过 `on-change` 钩子函数来对列表进行控制",
     "path": "upload",
-    "sort": 8,
+    "sort": 7,
     "category": "component"
   },
   {
@@ -7115,7 +6485,7 @@
     "anchor": "tuo-zhuai-shang-chuan",
     "content": "拖拽上传",
     "path": "upload",
-    "sort": 9,
+    "sort": 8,
     "category": "component"
   },
   {
@@ -7124,7 +6494,7 @@
     "anchor": "shou-dong-shang-chuan",
     "content": "手动上传",
     "path": "upload",
-    "sort": 10,
+    "sort": 9,
     "category": "component"
   },
   {
@@ -7133,7 +6503,7 @@
     "anchor": "attribute",
     "content": "| 参数             | 说明                                                                                                                                 | 类型                               | 可选值                    | 默认值 || ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- | ------------------------- | ------ || action           | 必选参数，上传的地址，若该接口需要登录验证且登录token失效的情况下上传会进行提示，并自动跳转到登录页 | string        | —         | —      || headers          | 设置上传的请求头部                                                                                                                   | object                             | —                         | —      || method           | 设置上传的请求方法                                                                                                                   | string                             | post/put                  | post   || multiple         | 是否支持多选文件                                                                                                                     | boolean                            | —                         | —      || data             | 上传时附带的额外参数                                                                                                                 | object                             | —                         | —      || name             | 上传的文件字段名                                                                                                                     | string                             | —                         | file   || with-credentials | 支持发送 cookie 凭证信息                                                                                                             | boolean                            | —                         | false  || show-file-list   | 是否显示已上传文件列表                                                                                                               | boolean                            | —                         | true   || drag             | 是否启用拖拽上传                                                                                                                     | boolean                            | —                         | false  || accept           | 接受上传的[文件类型](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input",
     "path": "upload",
-    "sort": 11,
+    "sort": 10,
     "category": "component"
   },
   {
@@ -7142,7 +6512,7 @@
     "anchor": "slot",
     "content": "| name    | 说明                 || ------- | -------------------- || trigger | 触发文件选择框的内容 || tip     | 提示说明文字         |",
     "path": "upload",
-    "sort": 12,
+    "sort": 11,
     "category": "component"
   },
   {
@@ -7151,7 +6521,7 @@
     "anchor": "methods",
     "content": "| 方法名     | 说明                                                        | 参数                                || ---------- | ----------------------------------------------------------- | ----------------------------------- || clearFiles | 清空已上传的文件列表（该方法不支持在 before-upload 中调用） | —                                   || abort      | 取消上传请求                                                | （ file: fileList 中的 file 对象 ） || submit     | 手动上传文件列表                                            | —                                   |",
     "path": "upload",
-    "sort": 13,
+    "sort": 12,
     "category": "component"
   },
   {
@@ -7218,120 +6588,12 @@
     "category": "other"
   },
   {
-    "component": "zjCli",
-    "title": "准备工作",
-    "anchor": "zhun-bei-gong-zuo",
-    "content": "准备工作",
-    "path": "zjCli",
-    "sort": 0,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "1. 注册乐有家私有域用户",
-    "anchor": "one--zhu-ce-le-you-jia-si-you-yu-yong-hu",
-    "content": "![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-03/07/11/Fogb45TjcbwIKJRYemjQr1F16dJr.png)",
-    "path": "zjCli",
-    "sort": 1,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "2. 全局安装zj-cli组件脚手架",
-    "anchor": "two--quan-ju-an-zhuang-zj-clizu-jian-jiao-shou-jia",
-    "content": "2. 全局安装zj-cli组件脚手架",
-    "path": "zjCli",
-    "sort": 2,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "使用说明",
-    "anchor": "shi-yong-shuo-ming",
-    "content": "使用说明",
-    "path": "zjCli",
-    "sort": 3,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "1. 创建 gitLab 仓库（创建项目文件夹）",
-    "anchor": "one--chuang-jian-gitlab-cang-ku-chuang-jian-xiang-mu-wen-jian-jia",
-    "content": "1、前往 [gitLab](http://172.16.3.120/lyj-sub) 新建一个仓库；2、把项目拉取到本地；3、打开本地文件夹> PS：可以不创建远程仓库，在本地打开一个空文件夹后续用 git remote",
-    "path": "zjCli",
-    "sort": 4,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "2. 使用创建命令",
-    "anchor": "two--shi-yong-chuang-jian-ming-ling",
-    "content": "打开 cmd（命令行）执行以下命令（ project-name为要新建的组件包名 ）![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-03/07/14/Folbk8mXFy_uvb_7KwVURoRL_0iY.png)",
-    "path": "zjCli",
-    "sort": 5,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "3. 开发调试命令",
-    "anchor": "three--kai-fa-diao-shi-ming-ling",
-    "content": "1、安装依赖2、开发调试",
-    "path": "zjCli",
-    "sort": 6,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "4. 发布到乐有家私有域",
-    "anchor": "four--fa-bu-dao-le-you-jia-si-you-yu",
-    "content": "1、打包2、发布3、取消发布(project-name 为你新建项目时的名称)",
-    "path": "zjCli",
-    "sort": 7,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "模板文件说明",
-    "anchor": "mo-ban-wen-jian-shuo-ming",
-    "content": "模板文件说明",
-    "path": "zjCli",
-    "sort": 8,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "1. 模板目录说明",
-    "anchor": "one--mo-ban-mu-lu-shuo-ming",
-    "content": "![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-03/07/14/Fh2vICEcZ3ZQPy2QJfERaJlfl9GR.png)",
-    "path": "zjCli",
-    "sort": 9,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "2. 发版配置说明",
-    "anchor": "two--fa-ban-pei-zhi-shuo-ming",
-    "content": "1、配置文件 package.json![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-03/07/14/FvF_fxv4DqBC99UDCH0XQVaP23Pf.png)2、最终上传到私有域的效果![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-03/07/14/Fgov337b35lpAkzxfmUafHjM_1GP.png)",
-    "path": "zjCli",
-    "sort": 10,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "解决问题",
-    "anchor": "jie-jue-wen-ti",
-    "content": "1、正常创建一个新的组件自己去添加一些编译代码的配置，使用了此脚手架可以通过命令行创建出一个基础的组件模板，缩短创建组件的搭建流程。2、根据组件的应用场景（项目里面是否有当前组件所需的依赖）决定组件打包时是否打包此依赖，从而减小打包的体积大小。![Image text](https://images-tests.leyoujia.com/jjsky/dispatch/2023-04/19/09/FoMVy3p2FFedN8p1xk3H8tp01YEi.png)----",
-    "path": "zjCli",
-    "sort": 11,
-    "category": "guide"
-  },
-  {
-    "component": "zjCli",
-    "title": "目前已应用脚手架的组件：",
-    "anchor": "mu-qian-yi-ying-yong-jiao-shou-jia-de-zu-jian",
-    "content": "目前已应用脚手架的组件：",
-    "path": "zjCli",
-    "sort": 12,
-    "category": "guide"
+    "component": "lyj-public-sdk",
+    "title": "other-lyj-public-sdkzh-CN",
+    "anchor": "other-lyj-public-sdkzh-cn",
+    "content": "other-lyj-public-sdkzh-CN",
+    "sort": 732,
+    "path": "lyj-public-sdk",
+    "category": "other"
   }
 ]
